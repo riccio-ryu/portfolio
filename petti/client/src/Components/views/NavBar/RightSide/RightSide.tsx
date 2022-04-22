@@ -1,0 +1,215 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link, useRouteMatch, withRouter } from 'react-router-dom';
+import { FaSearch, FaPaw } from 'react-icons/fa';
+import { motion, useAnimation } from 'framer-motion';
+import { device } from '../../../utils/Size';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { isHamburgerClose, isLoginUser } from '../../../../atoms';
+import { actLogout } from '../../../../api';
+import { useMutation } from 'react-query';
+
+const RightMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: .4rem;
+    a{
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding: .6rem .6rem;
+        position: relative;
+        height: auto;
+        &:hover {
+            color: ${props => props.theme.logo.pink}
+        }
+        &#onNav{
+            color: ${props => props.theme.logo.pink};
+            span{
+                border-bottom: 2px solid ${props => props.theme.logo.pink};
+                opacity: 1;
+            }
+        }
+    }
+
+    @media ${device.tablet} {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        a{
+            padding: 1.8rem 0.5rem;
+            height: 5.6rem;
+        }
+    }
+`
+const NavStick = styled(motion.span)`
+    width: 100%;
+    height: 0rem;
+    display: block;
+    background-color: transparent;
+    border-bottom: 3px solid #181818;
+
+    @media ${device.tablet} {
+        width: calc(100% - 1rem);
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0.5rem;
+        box-sizing: border-box;
+        opacity: 1;
+    }
+`
+const NavStickVars = {
+    hover: { borderBottom: `2px solid #d3599c`, opacity: 1 }
+}
+const SearchContainer = styled.span`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const SearchIcon = styled(motion.span)`
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 0.6rem 0.6rem;
+    display: flex;
+    z-index: 1;
+    &:hover {
+        color: ${props => props.theme.logo.pink};
+    }
+    @media ${device.tablet}{
+        font-size: 1.8rem;
+        padding: 1.6rem 0.5rem;
+    }
+`
+const SearchInput = styled(motion.input)`
+    transform-origin: right center;
+    color: #181818;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid #181818;
+    width: calc(100vw - 1.2rem);
+    position: absolute;
+    right: 0;
+    padding: 5px 5px 5px 30px;
+    margin: 0 .6rem;
+    @media ${device.tablet}{
+        width: 18rem;
+        margin: 0;
+    }
+`
+const ProfileContainer = styled.span`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const ProfileIcon = styled(motion.span)`
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 0.6rem 0.6rem;
+    display: flex;
+    background-color: #fff;
+    width: 2.8rem;
+    height: 2.8rem;
+    justify-content: center;
+    align-items: center;
+    padding: unset;
+    border-radius: 50%;
+    border: 1px solid #999;
+    z-index: 1;
+    &:hover {
+        color: ${props => props.theme.logo.pink};
+    }
+    @media ${device.tablet}{
+        font-size: 1.8rem;
+    }
+`
+
+function RightSide() {
+    const signinMatch = useRouteMatch("/signin");
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [windowSize, setWindowSize] = useState(false);
+    const searchInputAnimation = useAnimation();
+    const toggleSearch = () => {
+        const tabSize = +device.tablet.replace(/[^0-9]/g, "")
+        const winSize= window.outerWidth;
+        if (searchOpen) {
+            searchInputAnimation.start({
+                scaleX: 0,
+                opacity: 0,
+            })
+        }else{
+            searchInputAnimation.start({
+                scaleX: 1,
+                opacity: 1,
+            })
+        }
+
+        if(tabSize > winSize){//tab보다 작으면
+            setWindowSize(!windowSize)
+        }else{
+            setWindowSize(windowSize)
+        }
+        setSearchOpen((prev) => !prev);
+    }
+
+    let valLoginUser = useRecoilValue(isLoginUser);
+    let setLoginUser = useSetRecoilState(isLoginUser)
+
+    const [ hamAdd, setHamAdd ] = useRecoilState(isHamburgerClose)
+    const closeHamburger = () => {
+        if(hamAdd){
+            setHamAdd(false)
+        }else{
+            setHamAdd(true)
+        }
+    }
+    
+    const logoutMutation = useMutation( () => actLogout() )
+    const logoutSubmit = () => {
+        logoutMutation.mutateAsync()
+            .then(res => {
+                console.log(res)
+                if(res.data.success){
+                    setLoginUser(false)
+                    window.location.reload()
+                }else{
+                    alert(`logout error`)
+                }
+            })
+    }
+
+  return (
+    <RightMenu>
+        <SearchContainer>
+            <SearchIcon
+                onClick={toggleSearch}
+                animate={{ x: (searchOpen ? (windowSize ? `calc(-100vw + 3.7rem)` : -150) : 0)  }}
+                transition={{ type: "linear" }}
+            >
+                <FaSearch />
+            </SearchIcon>
+            <SearchInput
+            animate={searchInputAnimation}
+            initial={{ scaleX: 0 }}
+            transition={{ type: "linear" }}
+            placeholder="Search for fet..." 
+            />
+        </SearchContainer>
+        {valLoginUser ?
+        <ProfileContainer onClick={logoutSubmit}>
+            <ProfileIcon>
+                <FaPaw />
+            </ProfileIcon>
+        </ProfileContainer>
+        :
+        <Link to={`/signin`} onClick={() => closeHamburger()} >Sign In{signinMatch && <NavStick whileHover="hover" variants={NavStickVars} />}</Link>
+        }
+    </RightMenu>
+  );
+}
+
+export default withRouter(RightSide);
