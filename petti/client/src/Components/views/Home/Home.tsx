@@ -1,11 +1,9 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import { getMovies, IGetMoviesResult } from '../../../api';
-import { makeImagePath } from '../../../util';
 import HomeRecentGallery from './HomeRecentGallery';
 import HomePopularGallery from './HomePopularGallery';
-import HomeRecommendGallery from './HomeRecommendGallery';
+import HomeMostViewGallery from './HomeMostViewGallery';
 import { withRouter } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -35,24 +33,26 @@ const MiddleLine = styled.div`
 `
 
 function Home() {
-    const { data, isLoading } = useQuery<IGetMoviesResult>(["movies", "nowPlaying"], getMovies)//나중에 node생성시에 확인하고 바꿔 줘야함
+    //const { data, isLoading } = useQuery<IGetMoviesResult>(["movies", "nowPlaying"], getMovies)//나중에 node생성시에 확인하고 바꿔 줘야함
   return (
-      <Wrapper>{isLoading ? 
-        (<Loader>Loading...</Loader>) : 
+      <Wrapper>
+          {/* {isLoading ? 
+        (<Loader>Loading...</Loader>) :  */}
         <>
             {/* <Banner bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}>Banner</Banner> */}
             <HomeRecentGallery />
             <MiddleLine />
             <HomePopularGallery />
             <MiddleLine />
-            <HomeRecommendGallery />
+            <HomeMostViewGallery />
             <MiddleLine />
             <>
-                해야 할 일, 굿즈추가
-                board 추가
+                {/* 해야 할 일, 굿즈추가
+                board 추가 */}
             </>
         </>
-        }</Wrapper>
+        {/* } */}
+      </Wrapper>
   );
 }
 

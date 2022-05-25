@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react'
 import { useMutation } from 'react-query'
+import { useRecoilState } from 'recoil'
 import { actAuth } from '../api'
+import { isLoginUser } from '../atoms'
 
  
 
-export default function Auth(SpecificComponent, option, adminRoute = null) {
+export default function Auth(SpecificComponent:any, option:any, adminRoute = null) {
 
-    function AuthenticationCheck(props) {
+    function AuthenticationCheck(props:any) {
         const authMutation = useMutation( () => actAuth())
+
+        const [ loginUser, setLoginUser ] = useRecoilState(isLoginUser)
 
         useEffect(() => {
             authMutation.mutateAsync()
                 .then(response => {
-                    console.log(response)
-                    console.log(response.data.isAuth)
+                    //console.log(response)
+                    // console.log(response.data.isAuth)
+                    if(response.data.isAuth){
+                        //login 된상태라면 recoil save
+                        setLoginUser(response.data._id)
+                    }
                     if(!response.data.isAuth){//not login
                         if(option){//Only logged in users can access
                             props.history.push('/')

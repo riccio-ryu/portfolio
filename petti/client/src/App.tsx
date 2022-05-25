@@ -7,6 +7,7 @@ import LoginPage from './Components/views/LoginPage/LoginPage';
 import RegisterPage from './Components/views/RegisterPage/RegisterPage';
 import Board from './Components/views/Board/Board';
 import Gallery from './Components/views/Gallery/Gallery';
+import GalleryUpload from './Components/views/Gallery/GalleryUpload';
 import Goods from './Components/views/Goods/Goods';
 import Health from './Components/views/Health/Health';
 import Together from './Components/views/Together/Together';
@@ -16,6 +17,7 @@ import { isTabletSize } from './atoms';
 import { ITableSize } from './api';
 import { device } from './Components/utils/Size';
 import Auth from './hoc/auth';
+import GalleryDetailPage from './Components/views/Gallery/GalleryDetailPage';
 
 const Wrapper = styled.div<ITableSize>`
   background-color: ${(props) => props.theme.light.darker};
@@ -50,6 +52,7 @@ function App() {
         <NavBar />
         <Wrapper winSize={isTabletMode} >
           <Switch>
+            {/*  null -> anybody, false -> not login, true -> only login  */}
             <Route exact path="/" component={Auth(Home, null)} />
             <Route exact path="/gallery" component={Auth(Gallery, null)} />
             <Route exact path="/health" component={Auth(Health, null)} />
@@ -58,6 +61,8 @@ function App() {
             <Route exact path="/board" component={Auth(Board, null)} />
             <Route exact path="/signin" component={Auth(LoginPage, false)} />
             <Route exact path="/signup" component={Auth(RegisterPage, false)} />
+            <Route exact path="/gallery/upload" component={Auth(GalleryUpload, true)} />
+            <Route exact path="/gallery/:galleryId" component={Auth(GalleryDetailPage, null)} />
           </Switch>
         </Wrapper>
       </Suspense>

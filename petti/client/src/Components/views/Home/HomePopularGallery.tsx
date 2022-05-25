@@ -1,31 +1,33 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { getMovies, IGetMoviesResult } from '../../../api';
-import { makeImagePath } from '../../../util';
+import { actGetGalleryPopular } from '../../../api';
 import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa'
-import { Slider, SliderTitle, SliderArrowBox, SliderRow, SliderBox, sliderOffset, sliderVariants, SliderDesc, SliderHeading, SliderUser, SliderUserImg, SliderUserName, SliderThumb } from './HomeCommon'
+import { Slider, SliderTitle, SliderArrowBox, SliderRow, SliderBox, sliderOffset, sliderVariants, SliderDesc, SliderHeading, SliderUser, SliderUserImg, SliderUserName, SliderThumb, SliderUserImgBox, SliderThumbBox } from './HomeCommon'
+import UserIcon from '../../utils/UserIcon';
 
 function HomePopularGallery() {
-    const { data, isLoading } = useQuery<IGetMoviesResult>(["movies", "nowPlaying"], getMovies)//나중에 node생성시에 확인하고 바꿔 줘야함
+    const { data:homePopularData, isLoading:homePopularLoading } = useQuery<any>(["home", "popularGallery"], actGetGalleryPopular)
+    console.log(homePopularData);
+    
     const [recentIndex, setRecentIndex] = useState(0);
     const [sliderDirection, setSliderDirection] = useState(false);
     const [leaving, setLeaving] = useState(false);
     const increaseRecent = () => {
-        if(data){
+        if(homePopularData){
             if(leaving) return;
             toggleLeaving();
             setSliderDirection(false);
-            const maxDataIndex = Math.ceil(data.results.length / sliderOffset) -1
+            const maxDataIndex = Math.ceil(homePopularData.data.popular.length / sliderOffset) -1
             setRecentIndex((prev) => ( prev===maxDataIndex? 0 : prev+1));
         }
     }
     const decreaseRecent = () => {
-        if(data){
+        if(homePopularData){
             if(leaving) return;
             toggleLeaving();
             setSliderDirection(true);
-            const maxDataIndex = Math.ceil(data.results.length / sliderOffset) -1
+            const maxDataIndex = Math.ceil(homePopularData.data.popular.length / sliderOffset) -1
             setRecentIndex((prev) => ( prev===0 ? maxDataIndex : prev -1));
         }
     }
@@ -50,16 +52,23 @@ function HomePopularGallery() {
                 transition={{ type: "tween", duration: 1 }}
                 key={recentIndex}
             >
-                {data?.results.slice(sliderOffset * recentIndex, sliderOffset * recentIndex + sliderOffset).map((movie) => (
+                {homePopularData?.data.popular.slice(sliderOffset * recentIndex, sliderOffset * recentIndex + sliderOffset).map((post:any) => (
                     <SliderBox>
-                        <SliderThumb key={movie.id} bgPhoto={makeImagePath(movie.backdrop_path, "w500")}>
-                        </SliderThumb>
+                        <SliderThumbBox href={`/gallery/${post._id}`} >
+                        <SliderThumb key={post.id} thumbPhoto={`http://localhost:4000/${post.thumbnail}`}>
+                        </SliderThumb></SliderThumbBox>
                         <SliderDesc>
-                            <SliderTitle>{movie.overview}</SliderTitle>
+                            <SliderTitle><a href={`/gallery/${post._id}`}>{post.title}</a></SliderTitle>
                             <SliderUser>
-                                <SliderUserImg bgPhoto={makeImagePath(movie.poster_path, "w500")}></SliderUserImg>
+                                <SliderUserImgBox>
+                                    {post.writer.image ?
+                                    <SliderUserImg src={`http://localhost:4000/${post.writer.image}`} alt='userImage'></SliderUserImg>
+                                    :
+                                    <UserIcon />
+                                    }
+                                </SliderUserImgBox>
                                 <SliderUserName>
-                                    {movie.title}
+                                    {post.writer.nick}
                                 </SliderUserName>
                             </SliderUser>
                         </SliderDesc>

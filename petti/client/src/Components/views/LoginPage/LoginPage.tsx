@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { device } from '../../utils/Size';
-import {useSetRecoilState } from 'recoil';
-import { isLoginUser } from '../../../atoms';
 import { ILogin, actLogin } from '../../../api';
 import { useMutation } from 'react-query';
 import { withRouter } from 'react-router-dom';
@@ -92,9 +90,6 @@ function LoginPage(props:any) {
     setRememberMe((prev) => !prev);
   }
 
-  let setLoginUser = useSetRecoilState(isLoginUser)
-  // let valLoginUser = useRecoilValue(isLoginUser)
-
   const loginMutation = useMutation((loginBody:ILogin) => actLogin(loginBody))
   /*const loginMutation = useMutation(actLogin, {
     onMutate: variables => {
@@ -122,14 +117,14 @@ function LoginPage(props:any) {
       .then((response) => {
         console.log(response)
         if(response.data.loginSuccess){
-          setLoginUser(true)
           window.localStorage.setItem('userId', response.data.userId);
           if(rememberMe){//remember
             window.localStorage.setItem('rememberMe', response.data.userId);
           }else{
             localStorage.removeItem('rememberMe');
           }
-          props.history.push('/')
+          //props.history.push('/')
+          window.location.href = '/'
         }else{
           alert('error')
         }

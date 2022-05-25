@@ -1,11 +1,11 @@
-const { User } = require("../models/user");
+const { User } = require("../models/User");
 
 
 let auth = (req, res, next) => {
     //인증 처리
 
     //1. 쿠키에서 토큰을 가져옴
-    let token = req.cookies.x_auth;
+    let token = req.cookies.petti_auth;
     //2. 토큰을 복호화 한 후 유저를 찾음
     User.findByToken(token, (err, user) => {
         if(err) throw err;

@@ -4,10 +4,11 @@ import { Link, useRouteMatch, withRouter } from 'react-router-dom';
 import { FaSearch, FaPaw } from 'react-icons/fa';
 import { motion, useAnimation } from 'framer-motion';
 import { device } from '../../../utils/Size';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState} from 'recoil';
 import { isHamburgerClose, isLoginUser } from '../../../../atoms';
 import { actLogout } from '../../../../api';
 import { useMutation } from 'react-query';
+import UserIcon from '../../../utils/UserIcon';
 
 const RightMenu = styled.div`
     display: flex;
@@ -101,34 +102,32 @@ const SearchInput = styled(motion.input)`
     }
 `
 const ProfileContainer = styled.span`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-const ProfileIcon = styled(motion.span)`
-    font-size: 2rem;
-    font-weight: 500;
-    padding: 0.6rem 0.6rem;
-    display: flex;
-    background-color: #fff;
+    background-color: black;
     width: 2.8rem;
     height: 2.8rem;
-    justify-content: center;
-    align-items: center;
-    padding: unset;
     border-radius: 50%;
+    position: relative;
+    overflow: hidden;
     border: 1px solid #999;
-    z-index: 1;
-    &:hover {
-        color: ${props => props.theme.logo.pink};
-    }
-    @media ${device.tablet}{
-        font-size: 1.8rem;
+    svg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
     }
 `
+const ProfileIcon = styled.img`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+`
+const ProfileIconIamge = styled.img``
 
-function RightSide() {
+function RightSide(props:any) {
     const signinMatch = useRouteMatch("/signin");
     const [searchOpen, setSearchOpen] = useState(false);
     const [windowSize, setWindowSize] = useState(false);
@@ -155,10 +154,7 @@ function RightSide() {
         }
         setSearchOpen((prev) => !prev);
     }
-
-    let valLoginUser = useRecoilValue(isLoginUser);
-    let setLoginUser = useSetRecoilState(isLoginUser)
-
+    const [ loginUser, setLoginUser ] = useRecoilState(isLoginUser)
     const [ hamAdd, setHamAdd ] = useRecoilState(isHamburgerClose)
     const closeHamburger = () => {
         if(hamAdd){
@@ -174,7 +170,7 @@ function RightSide() {
             .then(res => {
                 console.log(res)
                 if(res.data.success){
-                    setLoginUser(false)
+                    setLoginUser("")
                     window.location.reload()
                 }else{
                     alert(`logout error`)
@@ -199,11 +195,14 @@ function RightSide() {
             placeholder="Search for fet..." 
             />
         </SearchContainer>
-        {valLoginUser ?
+        {loginUser.length > 0 ?
         <ProfileContainer onClick={logoutSubmit}>
+            {props.userImage ? 
             <ProfileIcon>
-                <FaPaw />
             </ProfileIcon>
+            :
+            <UserIcon />
+            }
         </ProfileContainer>
         :
         <Link to={`/signin`} onClick={() => closeHamburger()} >Sign In{signinMatch && <NavStick whileHover="hover" variants={NavStickVars} />}</Link>

@@ -17,5 +17,5 @@ export const isHamburgerOpen = atom({
 
 export const isLoginUser = atom({// login 여부
     key: "isLoginUser",
-    default: false
+    default: ""
 })

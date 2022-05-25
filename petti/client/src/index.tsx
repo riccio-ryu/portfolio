@@ -78,6 +78,7 @@ button {
   border: unset;
   background-color: transparent;
   padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
   &:hover {
     cursor: pointer;
   }
