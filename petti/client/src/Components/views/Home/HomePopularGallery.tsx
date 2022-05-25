@@ -34,7 +34,7 @@ function HomePopularGallery() {
     const toggleLeaving =() => setLeaving((prev) => !prev);
   return (
     <Slider>
-        <SliderHeading>Popular Gallery</SliderHeading>
+        <SliderHeading>Most Liked Gallery</SliderHeading>
         <SliderArrowBox>
             <FaChevronCircleLeft onClick={decreaseRecent} /><FaChevronCircleRight onClick={increaseRecent} />
         </SliderArrowBox>

@@ -15,6 +15,11 @@ export const isHamburgerOpen = atom({
     default : false
 })
 
+export const isProfileOpen = atom({
+    key: "isProfileOpen",
+    default: false
+})
+
 export const isLoginUser = atom({// login 여부
     key: "isLoginUser",
     default: ""

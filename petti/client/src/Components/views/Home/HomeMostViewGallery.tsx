@@ -33,7 +33,7 @@ function HomeRecommendGallery() {
     const toggleLeaving =() => setLeaving((prev) => !prev);
   return (
     <Slider>
-        <SliderHeading>Recent Gallery</SliderHeading>
+        <SliderHeading>Most Viewed Gallery</SliderHeading>
         <SliderArrowBox>
             <FaChevronCircleLeft onClick={decreaseRecent} /><FaChevronCircleRight onClick={increaseRecent} />
         </SliderArrowBox>

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useRouteMatch, withRouter } from 'react-router-dom';
-import { FaSearch, FaPaw } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { motion, useAnimation } from 'framer-motion';
 import { device } from '../../../utils/Size';
 import { useRecoilState} from 'recoil';
-import { isHamburgerClose, isLoginUser } from '../../../../atoms';
-import { actLogout } from '../../../../api';
-import { useMutation } from 'react-query';
+import { isHamburgerClose, isLoginUser, isProfileOpen } from '../../../../atoms';
 import UserIcon from '../../../utils/UserIcon';
+import RightBubble from './RightBubble';
 
 const RightMenu = styled.div`
     display: flex;
@@ -163,19 +162,9 @@ function RightSide(props:any) {
             setHamAdd(true)
         }
     }
-    
-    const logoutMutation = useMutation( () => actLogout() )
-    const logoutSubmit = () => {
-        logoutMutation.mutateAsync()
-            .then(res => {
-                console.log(res)
-                if(res.data.success){
-                    setLoginUser("")
-                    window.location.reload()
-                }else{
-                    alert(`logout error`)
-                }
-            })
+    const [ profileOpen, setProfileOpen ] = useRecoilState(isProfileOpen)
+    const toggleProfile = () => {
+        setProfileOpen(prev => !prev)
     }
 
   return (
@@ -196,7 +185,7 @@ function RightSide(props:any) {
             />
         </SearchContainer>
         {loginUser.length > 0 ?
-        <ProfileContainer onClick={logoutSubmit}>
+        <ProfileContainer onClick={toggleProfile}>
             {props.userImage ? 
             <ProfileIcon>
             </ProfileIcon>
@@ -206,6 +195,9 @@ function RightSide(props:any) {
         </ProfileContainer>
         :
         <Link to={`/signin`} onClick={() => closeHamburger()} >Sign In{signinMatch && <NavStick whileHover="hover" variants={NavStickVars} />}</Link>
+        }
+        {profileOpen &&
+            <RightBubble />
         }
     </RightMenu>
   );
