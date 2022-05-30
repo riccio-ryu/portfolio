@@ -18,6 +18,8 @@ import { ITableSize } from './api';
 import { device } from './Components/utils/Size';
 import Auth from './hoc/auth';
 import GalleryDetailPage from './Components/views/Gallery/GalleryDetailPage';
+import MyPage from './Components/views/My/MyPage';
+import Cart from './Components/views/My/Cart';
 
 const Wrapper = styled.div<ITableSize>`
   background-color: ${(props) => props.theme.light.darker};
@@ -61,6 +63,8 @@ function App() {
             <Route exact path="/board" component={Auth(Board, null)} />
             <Route exact path="/signin" component={Auth(LoginPage, false)} />
             <Route exact path="/signup" component={Auth(RegisterPage, false)} />
+            <Route exact path="/mypage" component={Auth(MyPage, true)} />
+            <Route exact path="/cart" component={Auth(Cart, true)} />
             <Route exact path="/gallery/upload" component={Auth(GalleryUpload, true)} />
             <Route exact path="/gallery/:galleryId" component={Auth(GalleryDetailPage, null)} />
           </Switch>

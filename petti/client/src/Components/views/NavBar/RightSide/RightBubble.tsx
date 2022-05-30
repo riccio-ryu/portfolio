@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { device } from '../../../utils/Size';
 import { isLoginUser, isProfileOpen } from '../../../../atoms';
 import { useRecoilState } from 'recoil';
+import { Link } from 'react-router-dom';
 
 const BubbleWrap = styled.div`
     background-color: transparent;
@@ -31,8 +32,16 @@ const BubbleBox = styled.div`
     padding: .4rem;
     box-sizing: border-box;
     position: relative;
+    a{
+        height: auto !important;
+        padding: .4rem 1rem !important;
+        font-size: 1.4rem !important;
+        :hover{
+            cursor: pointer;
+        }
+    }
 `
-const BubbleAnk = styled.a`
+const BubbleLogOut = styled.button`
     height: auto !important;
     padding: .4rem 1rem !important;
     font-size: 1.4rem !important;
@@ -83,8 +92,9 @@ function RightBubble(props:any) {
         <BubbleContainer>
             <BubbleTri />
             <BubbleBox>
-                <BubbleAnk>Profile</BubbleAnk>
-                <BubbleAnk href='#' onClick={logoutSubmit} >Sign Out</BubbleAnk>
+                <Link to={`/mypage`} >My Profile</Link>
+                <Link to={`/cart`} >Cart</Link>
+                <BubbleLogOut onClick={logoutSubmit} >Sign Out</BubbleLogOut>
             </BubbleBox>
         </BubbleContainer>
     </BubbleWrap>
