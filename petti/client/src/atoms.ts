@@ -3,7 +3,7 @@ import { atom } from "recoil";
 
 export const isTabletSize = atom({//size tablet
     key: "isTable",
-    default: true,//ww > tw
+    default: "pc",//ww > tw
 })
 
 export const isHamburgerClose = atom({

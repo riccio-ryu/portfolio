@@ -4,12 +4,12 @@ import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
 import { useForm } from 'react-hook-form'
 import { FaPlus } from 'react-icons/fa'
-import { useQuery } from 'react-query'
 import { withRouter } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import styled from 'styled-components'
-import { fetchAuth, IAuth, IGalleryUpload } from '../../../api'
+import { IGalleryUpload } from '../../../api'
 import { isLoginUser } from '../../../atoms'
+import { Mode } from '../../utils/Mode'
 import { device } from '../../utils/Size'
 
 const GalleryUploadWrap = styled.div`
@@ -90,12 +90,16 @@ const GalleryUploadDrop = styled.div`
     width: 100%;
 `
 const GalleryUploadThumbBox = styled.div`
-    width: 32rem;
-    height: 24rem;
+    width: 50%;
+    height: calc((100vw - 3.2rem)/2 * 9/16);
     overflow: hidden;
     border: .1rem solid ${props => props.theme.logo.yellow};
     box-sizing: border-box;
     position: relative;
+    @media ${device.tablet}{
+        width: 32rem;
+        height: 24rem;
+    }
 `
 const GalleryUploadThumb = styled.img`
     width: auto;
@@ -108,8 +112,8 @@ const GalleryUploadThumb = styled.img`
     transform: translate(-50%, -50%);
 `
 const GalleryUploadBlock = styled.div`
-    width: 32rem;
-    height: 24rem;
+    width: 50%;
+    height: calc((100vw - 3.2rem)/2 * 9/16);
     border: .1rem solid ${props => props.theme.logo.yellow};
     display: flex;
     align-items: center;
@@ -117,6 +121,10 @@ const GalleryUploadBlock = styled.div`
     svg{
         font-size: 3rem;
         color: ${props => props.theme.logo.yellow};
+    }
+    @media ${device.tablet}{
+        width: 32rem;
+        height: 24rem;
     }
 `
 
@@ -138,14 +146,16 @@ function GalleryUpload(props:any) {
   const uploadDrop = (files:any) => {
     let formData = new FormData();
     formData.append("file", files[0])
-    //console.log(files)
+    console.log(files)
+    console.log(formData);
+    
 
     axios.post('/api/gallery/uploadfiles', formData, {
         headers: { 'content-type': 'multipart/form-data' }
     })
     .then(response=> {
         if(response.data.success){
-console.log(response.data);
+// console.log(response.data);
             let variable = {
                 filePath: response.data.filePath,
                 fileName: response.data.fileName,
@@ -208,7 +218,7 @@ console.log(response.data);
                     <Dropzone 
                     onDrop={uploadDrop}
                     multiple={false} 
-                    maxSize={1000000000}>
+                    maxSize={100000000}>
                     {({ getRootProps, getInputProps }) => (
                         <GalleryUploadBlock
                             {...getRootProps()}
@@ -220,7 +230,7 @@ console.log(response.data);
                     </Dropzone>
                     {thumbnailPath &&
                     <GalleryUploadThumbBox>
-                        <GalleryUploadThumb src={`http://localhost:4000/${thumbnailPath}`} alt='thumb' />
+                        <GalleryUploadThumb src={`${Mode.add}${thumbnailPath}`} alt='thumb' />
                     </GalleryUploadThumbBox>
                     }
                 </GalleryUploadDrop>

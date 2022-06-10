@@ -10,17 +10,25 @@ import { Link } from 'react-router-dom';
 const BubbleWrap = styled.div`
     background-color: transparent;
     width: 100vw;
-    height: 100vh;
-    position: fixed;
+    height: auto;
+    position: relative;
     top: 0;
     left: 0;
+    @media ${device.tablet}{
+        position: fixed;
+    }
 `
 const BubbleContainer = styled.div`
     border-radius: .4rem;
     border: 1px solid ${props => props.theme.dark.lighter};
-    position: absolute;
-    top: 5rem;
-    right: 3rem;
+    position: relative;
+    top: auto;
+    right: 0;
+    float: right;
+    @media ${device.tablet}{
+        top: 5rem;
+        right: 3rem;
+    }
 `
 const BubbleBox = styled.div`
     border-radius: .4rem;

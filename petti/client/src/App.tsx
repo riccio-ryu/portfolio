@@ -32,21 +32,31 @@ function App() {
   const setTabletSize = useSetRecoilState(isTabletSize);
   const resizeHandler = () => {
     if(window.outerWidth > +device.tablet.replace(/[^0-9]/g, "")){//ww가 큼
-      setTabletSize(true);
+      setTabletSize("pc");
+    }else if(window.outerWidth < +device.mobileL.replace(/[^0-9]/g, "")){
+      setTabletSize("mobile");
     }else{
-      setTabletSize(false);
+      setTabletSize("tablet")
     }
   }
   useEffect(() => {
     const ww = window.outerWidth;
     const tw = +device.tablet.replace(/[^0-9]/g, "")
-    if(tw > ww){setTabletSize(false)}
+    const mw = +device.mobileL.replace(/[^0-9]/g, "")
+    if(ww > tw){
+      setTabletSize("pc")
+    }else if(ww < mw){
+      setTabletSize("mobile")
+    }else{
+      setTabletSize("tablet")
+    }
     window.addEventListener('resize', resizeHandler)
   
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
   }, []);
+  //console.log(isTabletMode);
   
   return (
     <BrowserRouter>

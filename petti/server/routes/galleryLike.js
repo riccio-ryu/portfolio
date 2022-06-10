@@ -4,7 +4,7 @@ const { GalleryLike } = require('../models/GalleryLike');
 const { GalleryDislike } = require('../models/GalleryDislike');
 
 const { auth } = require("../middleware/auth");
-const { Gallery } = require('../models/gallery');
+const { Gallery } = require('../models/Gallery');
 
 //=================================
 //             Like Dislike

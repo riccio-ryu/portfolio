@@ -158,7 +158,7 @@ function NavBar() {
           <MenuBar 
           isOpen={hamburgerOpen} 
           animate={hamMenuAnimation}
-          initial={isTabletMode ? { top: `0` } : {top: `100vh`}}
+          initial={isTabletMode === "pc" ? { top: `0` } : {top: `100vh`}}
           transition={{ type: "linear" }}
           >
             <LeftSide />

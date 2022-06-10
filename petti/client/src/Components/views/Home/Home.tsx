@@ -5,6 +5,9 @@ import HomeRecentGallery from './HomeRecentGallery';
 import HomePopularGallery from './HomePopularGallery';
 import HomeMostViewGallery from './HomeMostViewGallery';
 import { withRouter } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isTabletSize } from '../../../atoms';
+import { device } from '../../utils/Size';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -28,23 +31,36 @@ const MiddleLine = styled.div`
     background-color: #ccc;
     padding-top: .1rem;
     box-sizing: border-box;
-    border-top: 4rem solid ${props => props.theme.light.darker};
+    border-top: 1.6rem solid ${props => props.theme.light.darker};
     /* border-bottom: 2.4rem solid ${props => props.theme.light.darker}; */
+    @media ${device.mobileL}{
+        border-top: 4rem solid ${props => props.theme.light.darker};
+    }
 `
 
 function Home() {
-    //const { data, isLoading } = useQuery<IGetMoviesResult>(["movies", "nowPlaying"], getMovies)//나중에 node생성시에 확인하고 바꿔 줘야함
+    const tableSize = useRecoilValue(isTabletSize)
+    
+    let changeOffset = 0;
+    if(tableSize === 'pc'){
+        changeOffset = 4;
+    }else if(tableSize === "tablet"){
+        changeOffset = 2;
+    }else{
+        changeOffset = 1;
+    }
+    
   return (
       <Wrapper>
           {/* {isLoading ? 
         (<Loader>Loading...</Loader>) :  */}
         <>
             {/* <Banner bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}>Banner</Banner> */}
-            <HomeRecentGallery />
+            <HomeRecentGallery sliderOffset={changeOffset} />
             <MiddleLine />
-            <HomePopularGallery />
+            <HomePopularGallery sliderOffset={changeOffset} />
             <MiddleLine />
-            <HomeMostViewGallery />
+            <HomeMostViewGallery sliderOffset={changeOffset} />
             <MiddleLine />
             <>
                 {/* 해야 할 일, 굿즈추가

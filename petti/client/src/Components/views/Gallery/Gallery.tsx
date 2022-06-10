@@ -8,6 +8,7 @@ import { useQuery } from 'react-query';
 import { actGetGallery } from '../../../api';
 import Loading from '../../utils/Loading';
 import UserIcon from '../../utils/UserIcon';
+import { Mode } from '../../utils/Mode';
 
 const GalleryWrap = styled.div`
   display: flex;
@@ -49,7 +50,10 @@ const GalleryUploadContainer = styled.div`
 `;
 const GalleryUploadDesc = styled.p`
   color: #000;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
+  @media ${device.tablet}{
+    font-size: 2.4rem;
+  }
 `
 const GalleryContainer = styled.div`
   width: 100%;
@@ -112,9 +116,9 @@ const GalleryDownBox = styled.div`
 `;
 const GalleryDownProfile = styled.a`
   background-color: black;
-  flex: 0 15%;
+  flex: 0 10%;
   height: 0;
-  padding-bottom: calc(15%);
+  padding-bottom: calc(10%);
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -124,6 +128,10 @@ const GalleryDownProfile = styled.a`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
+  }
+  @media ${device.tablet}{
+    flex: 0 15%;
+    padding-bottom: calc(15%);
   }
 `;
 const GalleryDownProfileImage = styled.img`
@@ -195,7 +203,7 @@ function Gallery() {
       <GalleryCard>
         <GalleryUpBox>
           <a href={`/gallery/${gallery._id}`} >
-          <GalleryUpThumb src={`http://localhost:4000/${gallery.thumbnail}`} alt='thumbnail' />
+          <GalleryUpThumb src={`${Mode.add}${gallery.thumbnail}`} alt='thumbnail' />
           {gallery.fileType === 'video' && <GalleryUpDuration>{`${minutes < 10 ? '0'+ minutes : minutes}`} : {`${seconds < 10 ? '0' + seconds : seconds}`}</GalleryUpDuration>}
           </a>
         </GalleryUpBox>

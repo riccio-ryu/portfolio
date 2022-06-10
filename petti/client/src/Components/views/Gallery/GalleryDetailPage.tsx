@@ -8,6 +8,7 @@ import { useMutation } from 'react-query'
 import Comments from './Sections/Comments';
 import LikeDislikes from './Sections/LikeDislikes';
 import UserIcon from '../../utils/UserIcon';
+import { Mode } from '../../utils/Mode';
 
 const GDetailWrap = styled.div`
     display: flex;
@@ -162,7 +163,7 @@ function GalleryDetailPage(props:any) {
     <GDetailWrap>
         <GDetailMain>
             <GDetailMainViewer>
-                {`${loadGallery.fileType}` === 'image' ? <GDetailMainImage  src={`http://localhost:4000/${loadGallery.filePath}`} alt='image' /> : <GDetailMainVideo  src={`http://localhost:4000/${loadGallery.filePath}`} autoPlay controls />}
+                {`${loadGallery.fileType}` === 'image' ? <GDetailMainImage  src={`${Mode.add}${loadGallery.filePath}`} alt='image' /> : <GDetailMainVideo  src={`${Mode.add}${loadGallery.filePath}`} autoPlay controls />}
             </GDetailMainViewer>
             <GDetailMainInfo>
                 <GDetailMainAbout>
@@ -171,8 +172,8 @@ function GalleryDetailPage(props:any) {
                         <GDetailToll>
                             <LikeDislikes viewer postId={galleryId} userId={localStorage.getItem('userId')} />
                         </GDetailToll>
-                        <GDetailToll>2</GDetailToll>
-                        <GDetailToll>3</GDetailToll>
+                        {/* <GDetailToll>2</GDetailToll>
+                        <GDetailToll>3</GDetailToll> */}
                     </GDetailMainTools>
                 </GDetailMainAbout>
                 <GDetailLineH></GDetailLineH>

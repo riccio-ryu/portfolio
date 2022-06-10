@@ -13,7 +13,7 @@ const ReadyWrap = styled.div`
 
 function Ready() {
   return (
-    <ReadyWrap>Not ready yet. Please wait for an update soon.</ReadyWrap>
+    <ReadyWrap>Not ready yet. Please wait for an update soon...</ReadyWrap>
   )
 }
 

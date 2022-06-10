@@ -32,7 +32,7 @@ export function getMovies (){
 /* interface */
 
 export interface ITableSize {
-    winSize: boolean;
+    winSize: string;
 }
 
 export interface ILogin {
@@ -111,17 +111,18 @@ export interface IGalleryLikes {
 }
 
 /* func */
+//const base_url = `http://3.87.90.33:4000`
     //login
 export const actLogin = async (loginData:ILogin) => {
-    return axios.post(`api/users/login`, loginData)
+    return axios.post(`/api/users/login`, loginData)
 }
     //logout
 export const actLogout = async () => {
-    return axios.get(`api/users/logout`)
+    return axios.get(`/api/users/logout`)
 }
     //register
 export const actRegister = async (registerData:IRegister) => {
-return axios.post(`api/users/register`, registerData)
+    return axios.post(`/api/users/register`, registerData)
 }
     //auth
 export const actAuth = async () => {

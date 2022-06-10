@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Gallery } = require("../models/gallery");
-const { GalleryLike } = require("../models/GalleryLike")
+const { Gallery } = require("../models/Gallery");
 
 const { auth } = require("../middleware/auth");
 //=================================

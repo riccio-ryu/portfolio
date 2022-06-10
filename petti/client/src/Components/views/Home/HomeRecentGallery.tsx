@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { actGetGalleryRecent } from '../../../api';
 import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa'
-import { Slider, SliderTitle, SliderArrowBox, SliderRow, SliderBox, sliderOffset, sliderVariants, SliderDesc, SliderHeading, SliderUser, SliderUserImg, SliderUserName, SliderThumb, SliderUserImgBox, SliderThumbBox } from './HomeCommon'
+import { Slider, SliderTitle, SliderArrowBox, SliderRow, SliderBox, sliderVariants, SliderDesc, SliderHeading, SliderUser, SliderUserImg, SliderUserName, SliderThumb, SliderUserImgBox, SliderThumbBox } from './HomeCommon'
 import UserIcon from '../../utils/UserIcon';
+import {Mode} from '../../utils/Mode';
 
-function HomeRecentGallery() {
+function HomeRecentGallery(props:any) {
     const { data:homeRecentData, isLoading:homeRecentLoading } = useQuery<any>(["home", "recentGallery"], actGetGalleryRecent)
+    console.log(props.sliderOffset);
+    const sliderOffset = props.sliderOffset;
     
     const [recentIndex, setRecentIndex] = useState(0);
     const [sliderDirection, setSliderDirection] = useState(false);
@@ -54,14 +57,14 @@ function HomeRecentGallery() {
                 {homeRecentData?.data.gallerys.slice(sliderOffset * recentIndex, sliderOffset * recentIndex + sliderOffset).map((post:any) => (
                     <SliderBox>
                         <SliderThumbBox href={`/gallery/${post._id}`} >
-                        <SliderThumb key={post.id} thumbPhoto={`http://localhost:4000/${post.thumbnail}`}>
+                        <SliderThumb key={post.id} thumbPhoto={`${Mode.add}${post.thumbnail}`}>
                         </SliderThumb></SliderThumbBox>
                         <SliderDesc>
                             <SliderTitle><a href={`/gallery/${post._id}`} >{post.title}</a></SliderTitle>
                             <SliderUser>
                                 <SliderUserImgBox>
                                     {post.writer.image ?
-                                    <SliderUserImg src={`http://localhost:4000/${post.writer.image}`} alt='userImage'></SliderUserImg>
+                                    <SliderUserImg src={`${Mode.add}${post.writer.image}`} alt='userImage'></SliderUserImg>
                                     :
                                     <UserIcon />
                                     }

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Gallery } = require("../models/gallery");
+const { Gallery } = require("../models/Gallery");
 var ffmpeg = require('fluent-ffmpeg');
 
 const { auth } = require("../middleware/auth");
@@ -50,19 +50,19 @@ router.post('/thumbnail', (req, res) => {
 
     //정보 가져오기
     ffmpeg.ffprobe(req.body.filePath, function(err, metadata){
-        //console.dir(metadata);
-        //console.log(metadata.format.duration);
+        console.dir(metadata);
+        console.log(metadata);
 
-        fileDuration = metadata.format.duration;
+        // fileDuration = metadata.format.duration;
         
-        thumbWidth = metadata.streams[0].width;
-        thumbHeight = metadata.streams[0].height;
-        thumbRatio = thumbHeight/thumbWidth;
-        if(thumbRatio < thumbRatioBase){//longer the height
-            thumbSize = `${Math.ceil(240*thumbWidth/thumbHeight)}x${240}`
-        }else{
-            thumbSize = `${320}x${Math.ceil(thumbHeight*320/thumbWidth)}`
-        }
+        // thumbWidth = metadata.streams[0].width;
+        // thumbHeight = metadata.streams[0].height;
+        // thumbRatio = thumbHeight/thumbWidth;
+        // if(thumbRatio < thumbRatioBase){//longer the height
+        //     thumbSize = `${Math.ceil(240*thumbWidth/thumbHeight)}x${240}`
+        // }else{
+        //     thumbSize = `${320}x${Math.ceil(thumbHeight*320/thumbWidth)}`
+        // }
 //console.log(thumbSize);
 
         //썸네일 생성
