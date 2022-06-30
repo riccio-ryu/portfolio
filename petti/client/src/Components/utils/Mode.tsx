@@ -1,6 +1,6 @@
 
 let address = '';
-const devAdd = false;//tr => dev // fls => pro
+const devAdd = true;//tr => dev // fls => pro
 
 const nowAdd = (dev:boolean) => {
     if(dev){

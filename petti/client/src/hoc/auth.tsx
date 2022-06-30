@@ -24,7 +24,8 @@ export default function Auth(SpecificComponent:any, option:any, adminRoute = nul
                     }
                     if(!response.data.isAuth){//not login
                         if(option){//Only logged in users can access
-                            props.history.push('/')
+                            alert('Login is required')
+                            props.history.push('/signin')
                         }
                     } else {//login
                         if(adminRoute && !response.data.isAdmin) {

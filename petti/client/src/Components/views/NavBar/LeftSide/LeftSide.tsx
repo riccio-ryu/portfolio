@@ -73,10 +73,10 @@ function LeftSide() {
   return (
       <LeftMenu>
           <Link to={`/gallery`} onClick={() => closeHamburger()} >Gallery{galleryMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
-          <Link to={`/health`} onClick={() => closeHamburger()} >Health{ healthMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
+          {/* <Link to={`/health`} onClick={() => closeHamburger()} >Health{ healthMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
           <Link to={`/goods`} onClick={() => closeHamburger()} >Goods{goodsMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
           <Link to={`/together`} onClick={() => closeHamburger()} >Together{togetherMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
-          <Link to={`/board`} onClick={() => closeHamburger()} >Board{boardMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link>
+          <Link to={`/board`} onClick={() => closeHamburger()} >Board{boardMatch && <NavStick layoutId='stick' whileHover="hover" variants={NavStickVars} />}</Link> */}
       </LeftMenu>
   );
 }

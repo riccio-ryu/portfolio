@@ -16,6 +16,8 @@ const BubbleWrap = styled.div`
     left: 0;
     @media ${device.tablet}{
         position: fixed;
+        height: 100vh;
+        z-index: 1;
     }
 `
 const BubbleContainer = styled.div`
@@ -100,8 +102,8 @@ function RightBubble(props:any) {
         <BubbleContainer>
             <BubbleTri />
             <BubbleBox>
-                <Link to={`/mypage`} >My Profile</Link>
-                <Link to={`/cart`} >Cart</Link>
+                {/* <Link to={`/mypage`} >My Profile</Link>
+                <Link to={`/cart`} >Cart</Link> */}
                 <BubbleLogOut onClick={logoutSubmit} >Sign Out</BubbleLogOut>
             </BubbleBox>
         </BubbleContainer>
