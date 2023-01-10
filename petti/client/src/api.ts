@@ -110,6 +110,10 @@ export interface IGalleryLikes {
     commentId?: string;
 }
 
+
+// export interface 
+
+
 /* func */
 //const base_url = `http://3.87.90.33:4000`
     //login
@@ -132,6 +136,10 @@ export const actAuth = async () => {
 export function fetchAuth() {
     return fetch('/api/users/auth').then((response) => response.json())
 }
+
+
+//Gallery
+
     //gallery get recent 
 export const actGetGalleryRecent = async () => {
     return axios.get(`/api/home/getGalleryRecent`)
@@ -183,4 +191,14 @@ export const actGalleryUpdislike = async(dislikeBody:IGalleryLikes) => {
     //gallery dislike un
 export const actGalleryUndislike = async(dislikeBody:IGalleryLikes) => {
     return axios.post(`/api/galleryLike/unDislike`, dislikeBody)
+}
+
+
+// Goods
+    
+    //goods upload
+export const actGoodsUpload = async (data:any) => {
+    return axios.post(`/api/goods/upload`, data, {
+        headers: { 'content-type': 'multipart/form-data' }
+    })
 }

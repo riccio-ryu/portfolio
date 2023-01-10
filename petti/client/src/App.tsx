@@ -9,6 +9,7 @@ import Board from './Components/views/Board/Board';
 import Gallery from './Components/views/Gallery/Gallery';
 import GalleryUpload from './Components/views/Gallery/GalleryUpload';
 import Goods from './Components/views/Goods/Goods';
+import GoodsUpload from './Components/views/Goods/GoodsUpload';
 import Health from './Components/views/Health/Health';
 import Together from './Components/views/Together/Together';
 import Home from './Components/views/Home/Home';
@@ -77,6 +78,7 @@ function App() {
             <Route exact path="/cart" component={Auth(Cart, true)} />
             <Route exact path="/gallery/upload" component={Auth(GalleryUpload, true)} />
             <Route exact path="/gallery/:galleryId" component={Auth(GalleryDetailPage, null)} />
+            <Route exact path="/goods/upload" component={Auth(GoodsUpload, true)} />
           </Switch>
         </Wrapper>
       </Suspense>
