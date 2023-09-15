@@ -26,3 +26,5 @@
 
 ![홈 광고](https://github.com/riccio-ryu/portfolio/blob/master/previous_company_work/nodamen/%ED%99%88_%EA%B4%91%EA%B3%A0%ED%99%94%EB%A9%B4.png)
 
+### 파트론 tv 어플 영상
+![GIFMaker_me](https://github.com/riccio-ryu/portfolio/assets/82762183/883eefe7-149f-44bf-bb4d-64230c2855cb)
