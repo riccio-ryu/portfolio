@@ -10,4 +10,4 @@
 - 주요 프로젝트 : 노다멘 홈페이지, 파트론 웹, 파트론 모바일, 파트론 삼성tv 어플, 파트론 kt기가지니, 파트론 엘지tv, 파트론 관리자 페이지 리뉴얼 등등
 
 #### 파트론 플레이어 플레이 이전
-!https://github.com/riccio-ryu/portfolio/blob/master/previous_company_work/nodamen/%EC%95%84%ED%8A%B8%EC%9B%8C%ED%81%AC_%ED%94%8C%EB%A0%88%EC%9D%B4%EC%A0%84%ED%99%94%EB%A9%B4.png
+https://github.com/riccio-ryu/portfolio/blob/master/previous_company_work/nodamen/%EC%95%84%ED%8A%B8%EC%9B%8C%ED%81%AC_%ED%94%8C%EB%A0%88%EC%9D%B4%EC%A0%84%ED%99%94%EB%A9%B4.png
