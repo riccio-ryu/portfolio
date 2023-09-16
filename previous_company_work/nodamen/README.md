@@ -37,13 +37,13 @@
 ### 파트론 tv 어플 영상
 > 선택한 컬렉션(작품 묶음)을 플레이 하기 전의 모습으로, 해당 컬렉션의 제목과 설명, 작품들의 리스트를 볼수 있다.
 - 홈 화면과 설정화면  
-![home_set](https://github.com/riccio-ryu/portfolio/assets/82762183/43df6304-62e7-40e1-b374-61f743fe4d7a)
+![home_set](https://github.com/riccio-ryu/portfolio/assets/82762183/43df6304-62e7-40e1-b374-61f743fe4d7a)  
 (홈 화면과 설정화면을 보여준다.)
 
-- 플레이어
-![pl_s](https://github.com/riccio-ryu/portfolio/assets/82762183/c76ccc6a-6e6a-445e-a8e2-dd9e9c495d6a)
+- 플레이어  
+![pl_s](https://github.com/riccio-ryu/portfolio/assets/82762183/c76ccc6a-6e6a-445e-a8e2-dd9e9c495d6a)  
 (작품을 플레이하는 화면을 노출한다. 또한 해당 작품의 설명과 다양한 버튼을 보여준다.)
 
 - 보관함과 검색 화면  
-![last_8](https://github.com/riccio-ryu/portfolio/assets/82762183/5178eef8-f981-42b3-ba56-5adc088cb23b)
+![last_8](https://github.com/riccio-ryu/portfolio/assets/82762183/5178eef8-f981-42b3-ba56-5adc088cb23b)  
 (자신이 보관한 작품들과 작품들로 만든 컬렉션을 보여주고, 검색화면을 보여준다.)
