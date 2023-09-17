@@ -4,6 +4,7 @@
 
 ---
 ## personal work
+<https://github.com/riccio-ryu/portfolio/tree/master/personal_work>  
 개인 작업물을 모아 놓은 공간입니다. 혼자 공부하여 새로운 프로잭트를 진행하거나, 테스트를 통해서 배움을 얻어가는 공간으로 구성되어 있습니다.
 
 ### jusi
@@ -19,4 +20,5 @@ react와 typescript, react-query(현재의 tanstack query의 react query), recoi
 
 ---
 ## previous company work
+<https://github.com/riccio-ryu/portfolio/tree/master/previous_company_work>  
 이전에 근무하였던 회사들의 작업물을 적어 놓았고, 간단한 설명과 근무하면서 고민하였던 코드들을 작성해 보았습니다.
