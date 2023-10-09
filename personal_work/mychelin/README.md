@@ -41,3 +41,57 @@ NextJS,Typescript, Tailwind, Prisma, PlanetScale React-Query and Recoil
 그에 따라 기존의 useState를 다량 변경할 것 같다.
 
 #### 1차 진행 캡쳐본
+###### Home
+<p>
+  <img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_home.png">
+데이터는 없기 때문에 예시 이미지 입니다.  
+</p>
+<br clear='left' />
+
+###### Sign-up
+<p>
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_join1.png">
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_join2.png">  
+<br />
+회원가입 페이지로, 회원의 기본정보를 입력하고 약관 동의를 받습니다. react-hook-form을 사용하여 data를 체크합니다  
+주소는 '/signup'
+</p>
+<br clear='left' />
+
+###### Sign-in
+<p>
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_login.png">
+로그인 페이지로, 회원가입 했던 이메일과 비밀번호를 입력하하면 됩니다. react-hook-form을 사용하여 data를 유효성검사를 합니다  
+주소는 '/signin'
+</p>
+<br clear='left' />
+
+###### Diary
+<p>
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary.png">
+본인이 작성한 글 리스트를 볼 수 있는 화면입니다.  
+주소는 '/diary'
+</p>
+<br clear='left' />
+<br />
+<p>
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary_detail.png">
+본인이 작성한 글이나 다른 유저가 공개한 글을 볼 수 있는 화면입니다.  
+주소는 '/diary/[글번호]'
+</p>
+<br clear='left' />
+<br />
+<p>
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary_upload.png">
+본인이 글을 작성할 때에 볼 수 있는 화면입니다.  
+주소는 '/diary/upload'
+</p>
+<br clear='left' />
+<br />
+###### Profile-user
+<p>
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_profile_user.png">
+다른 유저의 프로필과 작성하고 공개한 글 리스트를 볼 수 있는 화면입니다.  
+주소는 '/profile/[userid]'
+</p>
+<br clear='left' />
