@@ -1,16 +1,20 @@
-# MYCHELIN - Projcet
+# MYCHELIN - Project
 
 > 마이슐렝 : 나의 음식 이야기를 적고, 사람들과 공유를 할 수 있는 프로젝트
 > MICHELIN의 이름에서 MI를 My로 하여 자신의 맛집, 맛있는 음식 등 다른 사람들과 맛집을 공유하고, 매장의 메뉴별로 별점을 달아서, 매장과 메뉴의 디테일한 평점을 남기는 것을 목적으로 한다. 지도 어플을 통해서 해당 가게의 일반적인 평점을 볼 수 있으나 자신이 어떤 메뉴를 주문해야할지 고민이 될 때, 다른 사람의 평점을 보거나 자신이 이전에 남겼던 기록들을 통해서 자신에게 맞는 메뉴를 주문하기 쉽게 하기 위함이다. 기존의 지도 어플에는 방문했던 곳이라도 각 메뉴를 일일히 기억하거나 그 전과의 맛변화를 일일히 개인 메모장에 적어 놓곤했는데, 간편하게 확인하고 비교하고, 변화된 맛에도 새로 반응을 하는 것이 조금 더 객관적인 맛 평가가 될 것이라고 생각해서 기획하게 되었습니다. 공유를 하지 않더라도 본인만의 음식 기록 블로그로 사용해도 좋게 만들고자 한다.
 
 ### 사용 언어
 
-NextJS,Typescript, Tailwind, Prisma, PlanetScale React-Query and Recoil  
-(The programming language can be added when its used.)
+NextJS, Typescript, Tailwind, Prisma, PlanetScale React-Query and Recoil  
+(The programming language can be added when it's used.)
+
+### 확인 주소
+[기획서 pdf](https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/mychelin_portfolio.pdf)  
+[디자인 figma](https://www.figma.com/proto/6rMF3YWiEWGa4CsoW6xwWp?node-id=0-1&mode=design&t=7DyYtzbc3YWOcYK1-6)
 
 ### 업데이트 예정
 
-> 진행 상황 : 1차 완료
+> 진행 상황: 1차 완료
 
 1. 1차 업데이트 : 홈, 다이어리, 로그인, 회원가입 퍼블리싱 (23.10.08 gitHub push)
 2. 2차 업데이트 : 홈, 다이어리, 로그인, 회원가입 api 설계 및, PlanetScale, aws 배포
