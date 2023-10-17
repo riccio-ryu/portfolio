@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import StarPoint from './starPoint'
+import { deviceSize } from '@/atoms'
+import { useRecoilValue } from 'recoil'
 
 interface BoardProps {
   use: boolean // star point use :: span show
@@ -26,6 +28,7 @@ export default function StarBoard({
 }: BoardProps) {
   const [number, setNumber] = useState('0') // star point write input
   const [cntChange, setCntChange] = useState(point) //point value change state
+  const device = useRecoilValue(deviceSize)
   const onNumber = (event: Event | undefined) => {
     // console.log(event?.target.value) err
     const target = event?.target as HTMLInputElement
@@ -48,12 +51,14 @@ export default function StarBoard({
 
   return (
     <div className="relative flex flex-wrap items-center justify-start gap-0 overflow-hidden">
-      <span className={`w-16 flex-none text-xs ${use ? '' : 'hidden'}`}>
+      <span
+        className={`w-16 flex-none text-ss sm:text-xs ${use ? '' : 'hidden'}`}
+      >
         {showName}
       </span>
       <StarPoint
         use={act}
-        width={width}
+        width={device === 'pc' ? width : width / 2}
         cnt={cntChange}
         name={name}
         depth={depth}
@@ -62,15 +67,24 @@ export default function StarBoard({
       <input
         type="number"
         value={number}
-        className="ml-3 w-6 text-right text-sm"
+        className={`ml-2 w-4 text-right text-ss sm:ml-3 sm:w-6 sm:text-sm ${
+          act
+            ? 'border-b border-solid border-mcl-ccc focus-within:border-mcl-orange'
+            : ''
+        }`}
         onChange={() => onNumber(event)}
         max={10}
         min={0}
         id={name}
         step={0.1}
-        readOnly={act}
+        readOnly={!act}
       />
-      <label htmlFor={name} className="ml-2 text-xs text-mcl-999">
+      <label
+        htmlFor={name}
+        className={`ml-2 text-ss text-mcl-999 sm:text-xs ${
+          device !== 'pc' && 'hidden'
+        }`}
+      >
         점 / 10점
       </label>
     </div>

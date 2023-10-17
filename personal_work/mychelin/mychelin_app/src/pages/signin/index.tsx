@@ -56,6 +56,7 @@ const SignIn: NextPage = () => {
                 label="E-mail"
                 name="email"
                 type="text"
+                goal="sign-in"
                 err={errors.email && errors.email.message}
                 required={false}
                 register={register('email')}
@@ -64,6 +65,7 @@ const SignIn: NextPage = () => {
                 label="Password"
                 name="password"
                 type="password"
+                goal="sign-in"
                 err={errors.password && errors.password.message}
                 required={false}
                 register={register('password')}

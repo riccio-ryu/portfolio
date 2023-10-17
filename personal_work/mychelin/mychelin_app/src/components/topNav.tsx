@@ -13,20 +13,22 @@ export default function TopNav({ navNow }: TopNavProps) {
         {/* left logo */}
         <div className="flex flex-nowrap content-center items-center justify-start gap-1.5 sm:gap-3">
           <div className="h-6 w-6 bg-mcl-logo bg-contain bg-center bg-no-repeat sm:h-10 sm:w-10"></div>
-          <h1 className="font-inter text-xl font-semibold">MYCHELIN</h1>
+          <h1 className="font-inter text-base font-semibold sm:text-xl">
+            MYCHELIN
+          </h1>
         </div>
         {/* right option */}
-        <div className="flex flex-row items-center justify-end gap-2.5">
+        <div className="flex flex-row items-center justify-end gap-0.5 sm:gap-2.5">
           <a href="#" className="block">
-            <VscSearch className="text-xl" />
+            <VscSearch className="text-sm sm:text-xl" />
           </a>
           <a href="#" className="block">
-            <VscListFilter className="text-xl" />
+            <VscListFilter className="text-sm sm:text-xl" />
           </a>
           {/* not login */}
           <Link href="/signup" className="block">
             <span
-              className={`box-border rounded-[4px] border border-solid border-transparent px-1 py-0.5 text-base font-bold text-mcl-red transition duration-100 ease-in-out ${
+              className={`box-border rounded-[4px] border border-solid border-transparent px-1 py-0.5 text-xs font-bold text-mcl-red transition duration-100 ease-in-out sm:text-base ${
                 navNow === 'signup' ? 'bg-mcl-red text-white' : ''
               }`}
             >
@@ -35,7 +37,7 @@ export default function TopNav({ navNow }: TopNavProps) {
           </Link>
           <Link href="/signin" className="group block">
             <span
-              className={`box-border rounded-[4px] border border-solid border-mcl-red px-1 py-0.5 text-base font-bold text-mcl-red transition duration-100 ease-in-out group-hover:bg-mcl-red group-hover:text-white ${
+              className={`box-border rounded-[4px] border border-solid border-mcl-red px-1 py-0.5 text-xs font-bold text-mcl-red transition duration-100 ease-in-out group-hover:bg-mcl-red group-hover:text-white sm:text-base ${
                 navNow === 'signin' ? 'bg-mcl-red text-white' : ''
               }`}
             >

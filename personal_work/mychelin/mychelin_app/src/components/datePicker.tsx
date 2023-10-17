@@ -43,7 +43,7 @@ export default function DatePicker({
   return (
     <div className="w-full">
       <ReactDatePicker
-        className="box-border w-full flex-1 rounded-lg border border-solid border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange"
+        className="box-border w-full flex-1 rounded-lg border border-solid border-mcl-999 px-1 py-1 text-xs transition-all duration-100 ease-in-out focus:border-mcl-orange sm:text-base"
         dateFormat="yyyy.MM.dd"
         formatWeekDay={(nameOfDay) => nameOfDay.substring(0, 1)}
         showYearDropdown

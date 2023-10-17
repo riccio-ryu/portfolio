@@ -50,8 +50,10 @@ export default memo(function StarPoint({
     const rect = refPoints.current
       ? refPoints.current.getBoundingClientRect().x
       : 0
+    const multi = 100 / (width * starIdx.length)
+    // console.log(mouseEvent, mouseEvent.clientX, rect)
 
-    setRate(mouseEvent.clientX - rect)
+    setRate((mouseEvent.clientX - rect) * multi)
   }
 
   return (

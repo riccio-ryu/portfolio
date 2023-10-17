@@ -33,6 +33,9 @@ module.exports = {
         noto_sans_kr: ['var(--noto_sans_kr)'],
         nanium_gothic: ['var(--nanium_gothic)'],
       },
+      fontSize: {
+        ss: ['0.625rem', '0.75rem'],
+      }
     },
   },
   darkMode: 'class', // dark mode 대비 미리 생성

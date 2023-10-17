@@ -17,8 +17,11 @@ const Home: NextPage = () => {
           <ItemHome key={i} />
         ))}
         {/* write button */}
-        <div className="fixed bottom-5 right-1/2 translate-x-[480px]">
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-mcl-orange text-xl" onClick={() => router.push('/diary/upload')}>
+        <div className="fixed bottom-11 right-1 translate-x-0 sm:bottom-5 sm:right-1/2 sm:translate-x-[480px]">
+          <button
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-mcl-orange text-base sm:h-10 sm:w-10 sm:text-xl"
+            onClick={() => router.push('/diary/upload')}
+          >
             <VscEdit className="text-white" />
           </button>
         </div>

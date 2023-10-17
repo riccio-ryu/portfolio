@@ -9,6 +9,8 @@ import {
 } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import React from 'react'
+import { RecoilRoot } from 'recoil'
+
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -42,10 +44,12 @@ export const nanum_gothic = Nanum_Gothic({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
+    <RecoilRoot>
     <div
-      className={`"mx-auto w-full" h-full font-roboto ${inter.variable} ${montserrat.variable} ${roboto.variable} ${noto_sans_kr.variable} ${nanum_gothic.variable}`}
+      className={`mx-auto w-full h-full font-roboto ${inter.variable} ${montserrat.variable} ${roboto.variable} ${noto_sans_kr.variable} ${nanum_gothic.variable}`}
     >
       <Component {...pageProps} />
     </div>
+    </RecoilRoot>
   )
 }

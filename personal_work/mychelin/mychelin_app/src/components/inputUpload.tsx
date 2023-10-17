@@ -46,7 +46,10 @@ export default function InputUpload({
           tag === 'textarea' ? 'items-baseline' : 'items-center'
         }`}
       >
-        <label htmlFor={name} className="w-1/6 flex-none text-sm sm:text-base">
+        <label
+          htmlFor={name}
+          className="w-1/5 flex-none text-xs sm:w-1/6 sm:text-base"
+        >
           {required ? <span className="text-mcl-orange">* </span> : ''} {label}
         </label>
         {tag === 'input' ? (
@@ -54,22 +57,22 @@ export default function InputUpload({
             type={type}
             id={name}
             required={required}
-            className="box-border w-max flex-1 rounded-lg border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange"
+            className="box-border flex-1 rounded-lg border border-mcl-999 px-1 py-1 text-xs transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-max sm:text-base"
             {...register}
           />
         ) : null}
         {add.length > 0 && (
-          <span className="w-24 text-right">
+          <span className="ml-1 w-16 text-right sm:ml-0 sm:w-24">
             {add === 'plus' ? (
               <button
-                className="w-20 flex-none rounded-lg bg-mcl-orange py-1 text-sm text-white"
+                className="w-16 flex-none rounded bg-mcl-orange py-1 text-xs text-white sm:w-20 sm:rounded-lg sm:text-sm"
                 onClick={btnClick}
               >
                 메뉴 추가
               </button>
             ) : (
               <button
-                className="w-20 flex-none rounded-lg bg-mcl-yellow py-1 text-sm text-white"
+                className="w-16 flex-none rounded bg-mcl-yellow py-1 text-xs text-white sm:w-20 sm:rounded-lg sm:text-sm"
                 onClick={btnClick}
               >
                 메뉴 삭제
@@ -81,7 +84,7 @@ export default function InputUpload({
           <textarea
             id={name}
             rows={8}
-            className="box-border w-max flex-1 resize-none rounded-lg border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange"
+            className="box-border flex-1 resize-none rounded-lg border border-mcl-999 px-1 py-1 text-xs transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-max sm:text-base"
             {...register}
           ></textarea>
         ) : null}

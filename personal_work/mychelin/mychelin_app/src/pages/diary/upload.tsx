@@ -101,7 +101,7 @@ const DiaryUpload: NextPage = () => {
     // diary detail page
     <div>
       <Layout>
-        <div className="mx-auto my-0 pt-6 sm:w-[720px]">
+        <div className="mx-auto my-0 w-full pt-6 sm:w-[720px]">
           <form
             className="flex h-auto w-full flex-col items-center justify-start gap-6"
             onSubmit={handleSubmit(onSubmit)}
@@ -112,7 +112,7 @@ const DiaryUpload: NextPage = () => {
                 className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2.5"
               >
                 <VscAdd className="text-5xl text-mcl-orange" />
-                <p className="text-sm text-mcl-999">
+                <p className="text-center text-ss text-mcl-999 sm:text-sm">
                   Add your images or short videos...
                 </p>
                 <input type="file" id="fileUpload" className="hidden" />
@@ -138,11 +138,12 @@ const DiaryUpload: NextPage = () => {
                 register={register('restaurant')}
               />
               <div className="flex items-start justify-start pb-3">
-                <span className="h-full w-1/6 bg-transparent"></span>
-                <div className="flex flex-col items-stretch justify-between gap-2">
+                <span className="h-full w-1/5 bg-transparent sm:w-1/6"></span>
+                <div className="flex flex-col items-stretch justify-between gap-1 sm:gap-2">
                   <StarBoard
                     use
                     name="서비스"
+                    act
                     width={20}
                     point={restaurantStar.service}
                     starChange={(num) => changeRestaurantStar('service', num)}
@@ -150,6 +151,7 @@ const DiaryUpload: NextPage = () => {
                   <StarBoard
                     use
                     name="위생"
+                    act
                     width={20}
                     point={restaurantStar.hygiene}
                     starChange={(num) => changeRestaurantStar('hygiene', num)}
@@ -157,6 +159,7 @@ const DiaryUpload: NextPage = () => {
                   <StarBoard
                     use
                     name="분위기"
+                    act
                     width={20}
                     point={restaurantStar.mood}
                     starChange={(num) => changeRestaurantStar('mood', num)}
@@ -164,6 +167,7 @@ const DiaryUpload: NextPage = () => {
                   <StarBoard
                     use
                     name="추천"
+                    act
                     width={20}
                     point={restaurantStar.recommend}
                     starChange={(num) => changeRestaurantStar('recommend', num)}
@@ -171,6 +175,7 @@ const DiaryUpload: NextPage = () => {
                   <StarBoard
                     use
                     name="재방문의사"
+                    act
                     width={20}
                     point={restaurantStar.revisit}
                     starChange={(num) => changeRestaurantStar('revisit', num)}
@@ -197,8 +202,8 @@ const DiaryUpload: NextPage = () => {
                     }}
                   />
                   <div className="flex items-start justify-start pb-3">
-                    <span className="h-full w-1/6 bg-transparent"></span>
-                    <div className="flex flex-col items-stretch justify-between gap-2">
+                    <span className="h-full w-1/5 bg-transparent sm:w-1/6"></span>
+                    <div className="flex flex-col items-stretch justify-between gap-1 sm:gap-2">
                       <StarBoard
                         use
                         name="맛"
@@ -242,9 +247,9 @@ const DiaryUpload: NextPage = () => {
                 register={register('review')}
               />
             </div>
-            <div>
+            <div className="w-full">
               <button
-                className="w-32 rounded-[4px] bg-mcl-orange px-9 py-3 text-white"
+                className="w-full rounded-[4px] bg-mcl-orange px-9 py-2 text-xs text-white sm:w-32 sm:py-3 sm:text-base"
                 type="submit"
               >
                 저장

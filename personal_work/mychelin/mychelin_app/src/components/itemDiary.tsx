@@ -22,7 +22,7 @@ export default function ItemDiary() {
     <div className="relative box-border h-auto w-full border-t border-solid border-mcl-eee first:border-none">
       <div className="box-border flex h-auto w-full items-start justify-start gap-2 py-6">
         {/* contents card - pictures */}
-        <div className=" relative h-52 w-52 flex-none overflow-hidden rounded">
+        <div className=" relative h-0 w-1/2 flex-none overflow-hidden rounded pb-[calc(50%)] sm:w-52 sm:pb-52">
           <div className="absolute left-0 top-0 h-full w-full bg-gray-400">
             <img src="" alt="" />
           </div>
@@ -35,16 +35,19 @@ export default function ItemDiary() {
         </div>
 
         {/* contents card - texts */}
-        <div className="flex h-52 w-full flex-col flex-nowrap items-start justify-between gap-3">
+        <div className="flex h-40 w-full flex-col flex-nowrap items-start justify-between gap-1 sm:h-52 sm:gap-3">
           {/* contents card - texts - title */}
-          <div className="flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col gap-0.5 sm:gap-2">
             <div className="relative flex items-center justify-between">
-              <span>2023.09.7</span>
-              <VscEllipsis onClick={() => onModal()} className="mr-1.5" />
+              <span className="text-ss sm:text-base">2023.09.7</span>
+              <VscEllipsis
+                onClick={() => onModal()}
+                className="mr-1.5 text-xs sm:text-base"
+              />
               <ItemDiaryModal view={modal} onModal={() => onModal()} />
             </div>
-            <div className="flex w-full flex-col items-start justify-start gap-1">
-              <h3 className="line-clamp-2 text-base font-bold text-black">
+            <div className="flex w-full flex-col items-start justify-start gap-0.5 sm:gap-1">
+              <h3 className="line-clamp-2 text-xs font-bold text-black sm:text-base">
                 홍대에 있는 사루카메에 방문을 하여 보았다. 역시 맛있는 집,
                 언제나 실패가 없는 맛집이다. 합정에 방문한다면 무조건 고민해
                 봐야할 엄청난 라멘
@@ -58,9 +61,11 @@ export default function ItemDiary() {
           {/* contents card - texts - value */}
           <div className="flex h-full w-full flex-col items-stretch justify-between gap-1">
             <div className="flex flex-row items-start justify-start gap-2">
-              <div className="w-8 text-sm">장소 : </div>
+              <div className="w-6 flex-none text-ss sm:w-8 sm:text-sm">
+                장소 :{' '}
+              </div>
               <div className="flex-auto">
-                <div className="flex flex-row items-center justify-stretch gap-2 text-sm">
+                <div className="flex flex-col gap-0.5 text-ss sm:flex-row sm:items-center sm:justify-stretch sm:gap-2 sm:text-sm">
                   <p className="text-black">{restaurantPoint.name}</p>
                   <div className="flex gap-0 text-mcl-orange">
                     <StarBoard
@@ -74,13 +79,15 @@ export default function ItemDiary() {
               </div>
             </div>
             <div className="flex flex-row items-start justify-start gap-2">
-              <div className="w-8 text-sm">메뉴 : </div>
+              <div className="w-6 flex-none text-ss sm:w-8 sm:text-sm">
+                메뉴 :{' '}
+              </div>
               <div className="flex flex-auto flex-col items-start justify-start gap-1">
                 {menusPoint.map((mp, i) =>
                   i < 2 ? (
                     <div
                       key={i}
-                      className="flex flex-row items-center justify-stretch gap-2 text-sm"
+                      className="flex flex-col gap-0.5 text-ss sm:flex-row sm:items-center sm:justify-stretch sm:gap-2 sm:text-sm"
                     >
                       <p className="text-black">{mp.menu}</p>
                       <div className="flex gap-0 text-mcl-orange">
@@ -103,20 +110,20 @@ export default function ItemDiary() {
             {/* contents card - texts - icons */}
             <div className="flex h-auto items-center justify-between">
               <button
-                className={`pl-10 text-xs text-mcl-999 ${
+                className={`pl-8 text-ss text-mcl-999 sm:pl-10 sm:text-xs ${
                   menusPoint.length > 2 ? 'visible' : 'invisible'
                 }`}
               >
                 더보기
               </button>
-              <div className="flex items-center justify-end gap-3 text-lg">
+              <div className="flex items-center justify-end gap-3 text-xs sm:text-lg">
                 <span className="flex items-center justify-between gap-0.5">
                   <VscHeart />
-                  <span className="text-xs text-mcl-999">20</span>
+                  <span className="text-ss text-mcl-999 sm:text-xs">20</span>
                 </span>
                 <span className="flex items-center justify-between gap-0.5">
                   <VscComment />
-                  <span className="text-xs text-mcl-999">34</span>
+                  <span className="text-ss text-mcl-999 sm:text-xs">34</span>
                 </span>
               </div>
             </div>

@@ -74,14 +74,14 @@ const DiaryDetail: NextPage = () => {
     <div>
       <Layout>
         <div className="mx-auto my-0 w-full pt-6">
-          <div className="flex w-full flex-col items-stretch justify-start gap-8 overflow-hidden">
+          <div className="flex w-full flex-col items-stretch justify-start gap-4 overflow-hidden sm:gap-8">
             {/* profile */}
             <div className="flex w-full items-center justify-between">
               <div className="flex items-center justify-start gap-2.5">
-                <div className="relative flex-none overflow-hidden rounded-full bg-mcl-ivory sm:h-10 sm:w-10">
-                  <VscAccount className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:text-[calc(10rem/4)]" />
+                <div className="relative h-8 w-8 flex-none overflow-hidden rounded-full bg-mcl-ivory sm:h-10 sm:w-10">
+                  <VscAccount className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[calc(8rem/4)] sm:text-[calc(10rem/4)]" />
                 </div>
-                <div className="flex items-center justify-between gap-1">
+                <div className="flex items-center justify-between gap-1 text-sm sm:text-base">
                   <span>nickname</span>
                   <span className="h-0.5 w-0.5 rounded-full bg-black"></span>
                   <span>date</span>
@@ -101,7 +101,7 @@ const DiaryDetail: NextPage = () => {
                     className="pr-2"
                     ref={(el) => (photoZero.current[i] = el)}
                   >
-                    <div className="relative h-0 w-80 flex-none overflow-hidden rounded bg-mcl-ccc pb-80">
+                    <div className="relative h-0 w-[calc(100vw-16px)] flex-none overflow-hidden rounded bg-mcl-ccc pb-[calc(100vw-16px)] sm:w-80 sm:pb-80">
                       <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">{`photo ${i}`}</span>
                     </div>
                   </div>
@@ -123,15 +123,15 @@ const DiaryDetail: NextPage = () => {
               </div>
             </div>
             {/* desc */}
-            <div className="flex w-full items-baseline justify-start gap-2">
-              <p className="flex-none text-sm">내용 : </p>
-              <div className="flex w-full flex-col items-start justify-between gap-2">
-                <div className="font-bold text-black">
+            <div className="flex w-full items-baseline justify-start gap-1 sm:gap-2">
+              <p className="hidden flex-none text-sm">내용 : </p>
+              <div className="flex w-full flex-col items-start justify-between gap-1 sm:gap-2">
+                <div className="text-sm font-bold text-black sm:text-base">
                   홍대에 있는 사루카메에 방문을 하여 보았다. 역시 맛있는
                   집,언제나 실패가 없는 맛집이다. 합정에 방문한다면 무조건
                   고민해봐야할 엄청난 라멘
                 </div>
-                <div className="text-sm">
+                <div className="text-xs sm:text-sm">
                   평소에 즐겨먹던 라멘 중에 카메 라멘이 땡겨서 방문을 하였다.
                   이번에는 사루 라멘을 시켜 보았다.
                 </div>
@@ -145,17 +145,21 @@ const DiaryDetail: NextPage = () => {
               <VscBookmark />
             </div>
             {/* info */}
-            <div className="flex w-full items-baseline justify-start gap-2">
-              <p className="flex-none text-sm">장소 : </p>
+            <div className="flex w-full items-baseline justify-start gap-1 sm:gap-2">
+              <p className="flex-none text-xs sm:text-sm">장소 : </p>
               <div className="flex w-full flex-col items-start justify-between gap-1">
-                <div className="flex items-center justify-start gap-2">
-                  <p className="w-16 text-sm font-black">사루카메</p>
-                  <StarBoard
-                    use={false}
-                    name="restaurantTotal"
-                    point={9.5}
-                    act={false}
-                  />
+                <div className="flex items-baseline justify-start gap-1 sm:gap-2">
+                  <p className="min-w-[calc(4rem)] break-all text-xs font-black sm:text-sm">
+                    사루카메
+                  </p>
+                  <div className="flex-none">
+                    <StarBoard
+                      use={false}
+                      name="restaurantTotal"
+                      point={9.5}
+                      act={false}
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col items-start justify-between gap-1 pl-2">
                   <StarBoard
@@ -197,26 +201,31 @@ const DiaryDetail: NextPage = () => {
               </div>
             </div>
             {/* menus */}
-            <div className="flex w-full items-baseline justify-start gap-2">
-              <p className="flex-none text-sm">메뉴 : </p>
+            <div className="flex w-full items-baseline justify-start gap-1 sm:gap-2">
+              <p className="flex-none text-xs sm:text-sm">메뉴 : </p>
               <div className="flex w-full flex-wrap items-start justify-start gap-x-10 gap-y-5">
                 {menuArray.map((menu, i) => (
                   <div
                     key={i}
                     className="flex flex-col items-start justify-between gap-1"
                   >
-                    <div className="flex items-center justify-start gap-2">
-                      <p className="w-16 text-sm font-black">{menu.menu}</p>
-                      <StarBoard
-                        use={false}
-                        name={menu.menu}
-                        point={Number(
-                          ((menu.price + menu.amount + menu.taste) / 3).toFixed(
-                            1,
-                          ),
-                        )}
-                        act={false}
-                      />
+                    <div className="flex items-baseline justify-start gap-1 sm:gap-2">
+                      <p className="min-w-[calc(4rem)] break-all text-xs font-black sm:text-sm">
+                        {menu.menu}
+                      </p>
+                      <div className="flex-none">
+                        <StarBoard
+                          use={false}
+                          name={menu.menu}
+                          point={Number(
+                            (
+                              (menu.price + menu.amount + menu.taste) /
+                              3
+                            ).toFixed(1),
+                          )}
+                          act={false}
+                        />
+                      </div>
                     </div>
                     <div className="flex flex-col items-start justify-between gap-1 pl-2">
                       <StarBoard
@@ -250,28 +259,41 @@ const DiaryDetail: NextPage = () => {
               {replyArray.map((reply, i) => (
                 <div
                   key={i}
-                  className="flex w-full items-baseline justify-between "
+                  className="flex w-full flex-col items-start justify-between "
                 >
-                  <div className="flex items-start justify-start gap-1">
-                    <div className="flex items-center justify-between gap-1">
-                      <div className="relative flex-none overflow-hidden rounded-full bg-mcl-ivory sm:h-5 sm:w-5">
-                        {reply.user.image === '' ? (
-                          <VscAccount className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:text-[calc(5rem/4)]" />
-                        ) : (
-                          <>image</>
-                        )}
-                      </div>
-                      <button className="text-sm font-bold">
+                  <div className="flex w-full gap-1 sm:gap-2">
+                    <div className="relative h-4 w-4 flex-none overflow-hidden rounded-full bg-mcl-ivory sm:h-5 sm:w-5">
+                      {reply.user.image === '' ? (
+                        <VscAccount className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[calc(4rem/4)] sm:text-[calc(5rem/4)]" />
+                      ) : (
+                        <>image</>
+                      )}
+                    </div>
+                    <div className="flex flex-auto flex-col items-start justify-start gap-0.5 sm:gap-1">
+                      <button className="text-ss font-bold sm:text-sm">
                         {reply.user.nickname}
                       </button>
+                      <p className="pt-0.5 text-ss text-mcl-999 sm:text-xs">
+                        {reply.reply}
+                      </p>
+                      <div className="flex items-start justify-center gap-2">
+                        <div className="flex items-center justify-start gap-1">
+                          {reply.like ? (
+                            <VscHeartFilled
+                              className={`flex-none fill-mcl-red`}
+                            />
+                          ) : (
+                            <VscHeart className={`flex-none`} />
+                          )}
+                          <span className="text-ss text-mcl-999">16</span>
+                        </div>
+                        <div className="flex items-center justify-start gap-1">
+                          <VscComment className="flex-none" />
+                          <span className="text-ss text-mcl-999">2</span>
+                        </div>
+                      </div>
                     </div>
-                    <p className="pt-0.5 text-xs text-mcl-999">{reply.reply}</p>
                   </div>
-                  {reply.like ? (
-                    <VscHeartFilled className={`flex-none fill-mcl-red`} />
-                  ) : (
-                    <VscHeart className={`flex-none`} />
-                  )}
                 </div>
               ))}
             </div>
@@ -299,9 +321,9 @@ const DiaryDetail: NextPage = () => {
           </div>
         </div>
         {/* write button */}
-        <div className="fixed bottom-5 right-1/2 translate-x-[480px]">
+        <div className="fixed bottom-11 right-1 translate-x-0 sm:bottom-5 sm:right-1/2 sm:translate-x-[480px]">
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-mcl-orange text-xl"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-mcl-orange text-base sm:h-10 sm:w-10 sm:text-xl"
             onClick={() => router.push('/diary/upload')}
           >
             <VscEdit className="text-white" />

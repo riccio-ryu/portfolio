@@ -9,6 +9,7 @@ interface InputProps {
   register: UseFormRegisterReturn
   required: boolean
   err?: string
+  goal?: 'sign-in' | 'sign-up'
 }
 
 export default function InputJoin({
@@ -20,6 +21,7 @@ export default function InputJoin({
   type,
   required,
   err,
+  goal = 'sign-in',
 }: InputProps) {
   return (
     <div
@@ -32,7 +34,9 @@ export default function InputJoin({
       >
         <label
           htmlFor={name}
-          className="flex-none text-sm font-bold sm:text-base"
+          className={`${
+            goal === 'sign-in' ? 'w-20' : 'w-[140px]'
+          } flex-none text-sm font-bold sm:w-40 sm:text-base`}
         >
           {label} : {required ? <span className="text-mcl-orange">*</span> : ''}
         </label>
@@ -41,7 +45,7 @@ export default function InputJoin({
             type={type}
             id={name}
             required={required}
-            className="box-border w-[200px] min-w-[calc((100vw)/2.2)] rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:min-w-0"
+            className="box-border w-auto min-w-0 flex-auto rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-[200px] sm:min-w-0"
             {...register}
           />
         ) : null}
@@ -49,12 +53,16 @@ export default function InputJoin({
           <textarea
             id={name}
             rows={4}
-            className="box-border w-[200px] min-w-[calc((100vw)/2.2)] resize-none rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:min-w-0"
+            className="box-border w-auto min-w-0 flex-auto resize-none rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-[200px] sm:min-w-0"
             {...register}
           ></textarea>
         ) : null}
       </div>
-      {err && <div className="pl-40 text-[10px] text-mcl-red">{err}</div>}
+      {err && (
+        <div className="pl-0 text-right text-ss text-mcl-red sm:pl-40 sm:text-left">
+          {err}
+        </div>
+      )}
     </div>
   )
 }

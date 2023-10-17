@@ -29,7 +29,7 @@ export default function ItemHome() {
   }
   return (
     <div className="relative box-border h-auto w-full sm:w-1/2">
-      <div className="box-border flex h-auto w-full flex-col items-start justify-start gap-2 p-4 sm:p-6">
+      <div className="box-border flex h-auto w-full flex-col items-start justify-start gap-2 px-0 py-4 sm:p-6">
         {/* contents card - head */}
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-row items-center justify-start gap-2.5">
@@ -61,12 +61,12 @@ export default function ItemHome() {
         <div className="flex w-full flex-col gap-2.5">
           {/* contents card - texts - title */}
           <div className="flex flex-col gap-1">
-            <h3 className="line-clamp-2 text-base font-bold text-black">
+            <h3 className="line-clamp-2 text-xs font-bold text-black sm:text-base">
               오레노 라멘 본점(합정)에 방문을 하여 보았다. 역시 맛있는 집,
               언제나 실패가 없는 맛집이다. 합정에 방문한다면 무조건 고민해
               봐야할 엄청난 라멘
             </h3>
-            <p className="line-clamp-1 text-sm">
+            <p className="line-clamp-1 text-ss sm:text-sm">
               평소에 즐겨먹던 라멘 중에 토리 파이탄이 땡겨서 방문을 하였다.
               이번에는 카라파이탄을 시켜 보았다.
             </p>
@@ -81,10 +81,10 @@ export default function ItemHome() {
           {/* contents card - texts - value */}
           <div className="flex flex-col items-stretch justify-start  font-noto_sans_kr">
             <div className="flex flex-row items-start justify-start gap-2">
-              <div className="text-sm">장소 : </div>
+              <div className="text-ss sm:text-sm">장소 : </div>
               <div className="flex-auto">
                 <div className="flex flex-row items-center justify-stretch gap-2 text-sm">
-                  <p className="text-black">오레노 라멘</p>
+                  <p className="text-ss text-black sm:text-base">오레노 라멘</p>
                   <div className="flex gap-0 text-mcl-orange">
                     <VscStarFull />
                     <VscStarFull />
@@ -96,10 +96,12 @@ export default function ItemHome() {
               </div>
             </div>
             <div className="flex flex-row items-start justify-start gap-2">
-              <div className="text-sm">메뉴 : </div>
+              <div className="text-ss sm:text-sm">메뉴 : </div>
               <div className="flex-auto">
                 <div className="flex flex-row items-center justify-stretch gap-2 text-sm">
-                  <p className="text-black">토리 파이탄 라멘</p>
+                  <p className="text-ss text-black sm:text-base">
+                    토리 파이탄 라멘
+                  </p>
                   <div className="flex gap-0 text-mcl-orange">
                     <VscStarFull />
                     <VscStarFull />
@@ -109,7 +111,9 @@ export default function ItemHome() {
                   </div>
                 </div>
                 <div className="flex flex-row items-center justify-stretch gap-2 text-sm">
-                  <p className="text-black">카라 파이탄 라멘</p>
+                  <p className="text-ss text-black sm:text-base">
+                    카라 파이탄 라멘
+                  </p>
                   <div className="flex gap-0 text-mcl-orange">
                     <VscStarFull />
                     <VscStarFull />
@@ -119,7 +123,7 @@ export default function ItemHome() {
                   </div>
                 </div>
                 <div className="flex flex-row items-center justify-stretch gap-2 text-sm">
-                  <p className="text-black">차슈 추가</p>
+                  <p className="text-ss text-black sm:text-base">차슈 추가</p>
                   <div className="flex gap-0 text-mcl-orange">
                     <VscStarFull />
                     <VscStarFull />
@@ -138,8 +142,10 @@ export default function ItemHome() {
                 {/* <img src="" alt="" /> */}
                 <VscAccount className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
               </div>
-              <p className="flex-none text-sm font-bold">라멘 메니아</p>
-              <pre className="line-clamp-1 text-xs text-mcl-999">
+              <p className="flex-none text-xs font-bold sm:text-sm">
+                라멘 메니아
+              </p>
+              <pre className="line-clamp-1 text-ss text-mcl-999 sm:text-xs">
                 {`아 여기 가보고 싶었는데... 아 여기 가보고 싶었는데... 아 여기 가보고 싶었는데... 
 좋은 정보 잘 보고 갑니다. 
 저도 한번 방문해 보겠습니다.`}
