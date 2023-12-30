@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 interface modalProps {
   wording: string
   answer?: string
@@ -9,6 +11,18 @@ export default function ModalOne({
   answer = '예',
   onClose,
 }: modalProps) {
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`
+    return () => {
+      const scrollY = document.body.style.top
+      document.body.style.cssText = ''
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+    }
+  }, [])
   return (
     <div className="absolute left-0 top-0 z-50 h-full w-full">
       <div

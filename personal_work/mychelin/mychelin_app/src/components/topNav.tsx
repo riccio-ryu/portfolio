@@ -1,8 +1,9 @@
-import { deviceSize, loginInfo } from '@/atoms'
+import { loginInfo } from '@/atoms'
 import Link from 'next/link'
 import { VscSearch, VscListFilter, VscBell, VscAccount } from 'react-icons/vsc'
 import { useRecoilValue } from 'recoil'
-
+import ModalOne from './modalOne'
+import { useState } from 'react'
 interface TopNavProps {
   navNow?: string
 }
@@ -10,7 +11,15 @@ interface TopNavProps {
 export default function TopNav({ navNow }: TopNavProps) {
   //
   const login = useRecoilValue(loginInfo)
-  const deviceSz = useRecoilValue(deviceSize)
+  const [modal, setModal] = useState({ show: false, wording: '', answer: '' })
+
+  const onClickYet = () => {
+    setModal({
+      show: true,
+      wording: '준비중인 메뉴입니다. 곧 개발 완료하겠습니다. 감사합니다.',
+      answer: '예',
+    })
+  }
 
   return (
     <div className="fixed top-0 h-10 w-full bg-white shadow-lg sm:h-16">
@@ -24,19 +33,19 @@ export default function TopNav({ navNow }: TopNavProps) {
         </div>
         {/* right option */}
         <div className="flex flex-row items-center justify-end gap-0.5 sm:gap-2.5">
-          <a href="#" className="block">
+          <a href="#" className="block" onClick={() => onClickYet()}>
             <VscSearch className="text-sm sm:text-xl" />
           </a>
-          <a href="#" className="block">
+          <a href="#" className="block" onClick={() => onClickYet()}>
             <VscListFilter className="text-sm sm:text-xl" />
           </a>
           {/* login y/n */}
           {login ? (
             <>
-              <a href="#" className="block">
+              <a href="#" className="block" onClick={() => onClickYet()}>
                 <VscBell className="text-sm sm:text-xl" />
               </a>
-              <Link href="#" className="block">
+              <Link href="#" className="block" onClick={() => onClickYet()}>
                 <div className="relative h-3.5 w-3.5 overflow-hidden rounded-full bg-mcl-ivory sm:h-5 sm:w-5">
                   <VscAccount className="absolute left-1/2 right-1/2 -translate-x-1/2 text-sm sm:text-xl" />
                 </div>
@@ -66,6 +75,15 @@ export default function TopNav({ navNow }: TopNavProps) {
           )}
         </div>
       </div>
+      {modal.show && (
+        <div className="fixed left-0 top-0 h-full w-full">
+          <ModalOne
+            wording={modal.wording}
+            answer={modal.answer}
+            onClose={() => setModal({ show: false, wording: '', answer: '' })}
+          />
+        </div>
+      )}
     </div>
   )
 }
