@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/router'
+import { useRecoilState } from 'recoil'
+import useMutation from '@/libs/client/useMutation'
 import MenuNav from '@/components/menuNav'
 import TopNav from '@/components/topNav'
 import Layout from '@/components/layout'
@@ -9,9 +11,11 @@ import InputJoin from '@/components/inputJoin'
 import BtnJoin from '@/components/btnJoin'
 import CheckBox from '@/components/checkBox'
 import TermsBox from '@/components/termsBox'
+import LoadingFull from '@/components/loadingFull'
+import ModalOne from '@/components/modalOne'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import schemaMemberYup from '@/components/validationMemberYup'
+import schemaMemberYup from '@/utils/validationMemberYup'
 
 interface SignUpForm {
   email: string
@@ -25,13 +29,20 @@ interface SignUpForm {
   agree2: boolean
 }
 
+interface MutationResult {
+  ok: boolean
+  sameEmail: boolean
+  sameNickname: boolean
+}
+
 const SignUp: NextPage = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { isSubmitting, errors },
     watch,
+    setError,
+    setFocus,
   } = useForm<SignUpForm>({
     resolver: yupResolver(schemaMemberYup),
     mode: 'onChange',
@@ -39,11 +50,24 @@ const SignUp: NextPage = () => {
 
   const router = useRouter()
   const [btnNext, setBtnNext] = useState(true) // next button activation
+  const [submitting, setSubmitting] = useState(false) // loading
+  const [nowFocus, setNowFocus] = useState('')
+
+  const [
+    checkInfo,
+    { loading: checkLoading, data: checkData, error: checkError },
+  ] = useMutation<MutationResult>('/api/users/checkInfo')
+  const [
+    signUpAction,
+    { loading: signUpLoading, data: signUpData, error: signUpError },
+  ] = useMutation<MutationResult>('/api/users/signup')
+
   const [step, setStep] = useState(1)
   const [allAgree, setAllAgree] = useState(false)
   const [agree1, setAgree1] = useState(false)
   const [agree2, setAgree2] = useState(false)
   const [agreeState, setAgreeState] = useState(0) // where click agree
+  const [modal, setModal] = useState({ show: false, wording: '', answer: '' })
 
   useEffect(() => {
     // next btn state
@@ -97,8 +121,101 @@ const SignUp: NextPage = () => {
     }
   }, [agree2])
 
+  useEffect(() => {
+    if (step === 1) setAllAgree(false)
+  }, [step])
+
+  // email, nickname check
+  useEffect(() => {
+    setSubmitting(false)
+    if (!checkData) return
+    if (checkData?.ok === false) {
+      setModal({
+        show: true,
+        wording: `${
+          checkData.sameEmail && checkData.sameNickname
+            ? 'e-mail과 nickname이'
+            : checkData.sameEmail
+            ? 'e-mail이'
+            : 'nickname이'
+        } 이미 등록되어 있습니다.`,
+        answer: '예',
+      })
+      if (checkData.sameEmail) {
+        setError('email', {
+          type: 'used',
+          message: '이미 사용중인 e-mail입니다.',
+        })
+      }
+      if (checkData.sameNickname) {
+        setError('nickname', {
+          type: 'used',
+          message: '이미 사용중인 nickname입니다.',
+        })
+      }
+    } else {
+      setStep(2)
+    }
+  }, [checkData])
+
+  // sign up eff
+  useEffect(() => {
+    setSubmitting(false)
+    if (!signUpData) return
+    if (signUpData?.ok) {
+      // sign up success
+      router.push('/signin')
+    } else {
+      setModal({
+        show: true,
+        wording: '오류가 있습니다. 잠시뒤에 다시 시도해 주세요.',
+        answer: '예',
+      })
+    }
+  }, [signUpData, router])
+
+  const onFocusNow = (str: string) => {
+    setNowFocus(str)
+  }
+  const enterDown = () => {
+    if (
+      watch('email') !== '' &&
+      !errors.email &&
+      watch('password') !== '' &&
+      !errors.password &&
+      watch('confirmPassword') !== '' &&
+      !errors.confirmPassword &&
+      watch('nickname') !== '' &&
+      !errors.nickname &&
+      watch('name') !== '' &&
+      !errors.name &&
+      watch('interest') !== '' &&
+      !errors.interest &&
+      watch('introduce') !== '' &&
+      !errors.introduce
+    )
+      confirmInfo()
+    if (nowFocus === 'email') setFocus('password')
+    if (nowFocus === 'password') setFocus('confirmPassword')
+    if (nowFocus === 'confirmPassword') setFocus('nickname')
+    if (nowFocus === 'nickname') setFocus('name')
+    if (nowFocus === 'name') setFocus('interest')
+    if (nowFocus === 'interest') setFocus('introduce')
+  }
+
+  // id or nickname 서버에서 비교하여 중복 확인, 중복되면 스텝2 안간다
+  const confirmInfo = () => {
+    setSubmitting(true)
+    const cEmail = watch('email')
+    const cNick = watch('nickname')
+    if (checkLoading) return
+    checkInfo({ email: cEmail, nickname: cNick })
+  }
+  // signup info db...
   const onSubmit = (data: SignUpForm) => {
-    console.log(data)
+    setSubmitting(true)
+    if (signUpLoading) return
+    signUpAction(data)
   }
   return (
     <div>
@@ -121,6 +238,8 @@ const SignUp: NextPage = () => {
                   err={errors.email && errors.email.message}
                   required
                   register={register('email')}
+                  focusPre={() => onFocusNow('email')}
+                  enterDown={() => enterDown()}
                 ></InputJoin>
                 <InputJoin
                   label="Password"
@@ -129,6 +248,8 @@ const SignUp: NextPage = () => {
                   err={errors.password && errors.password.message}
                   required
                   register={register('password')}
+                  focusPre={() => onFocusNow('password')}
+                  enterDown={() => enterDown()}
                 />
                 <InputJoin
                   label="Confirm Password"
@@ -137,6 +258,8 @@ const SignUp: NextPage = () => {
                   err={errors.confirmPassword && errors.confirmPassword.message}
                   required
                   register={register('confirmPassword')}
+                  focusPre={() => onFocusNow('confirmPassword')}
+                  enterDown={() => enterDown()}
                 />
                 <InputJoin
                   label="Nickname"
@@ -145,6 +268,8 @@ const SignUp: NextPage = () => {
                   err={errors.nickname && errors.nickname.message}
                   required
                   register={register('nickname')}
+                  focusPre={() => onFocusNow('nickname')}
+                  enterDown={() => enterDown()}
                 />
                 <InputJoin
                   label="Name"
@@ -153,6 +278,8 @@ const SignUp: NextPage = () => {
                   err={errors.name && errors.name.message}
                   required={false}
                   register={register('name')}
+                  focusPre={() => onFocusNow('name')}
+                  enterDown={() => enterDown()}
                 />
                 <InputJoin
                   label="Food of interest"
@@ -161,6 +288,8 @@ const SignUp: NextPage = () => {
                   err={errors.interest && errors.interest.message}
                   required={false}
                   register={register('interest')}
+                  focusPre={() => onFocusNow('interest')}
+                  enterDown={() => enterDown()}
                 />
                 <InputJoin
                   label="Self-introduction"
@@ -169,6 +298,7 @@ const SignUp: NextPage = () => {
                   required={false}
                   register={register('introduce')}
                   tag="textarea"
+                  focusPre={() => onFocusNow('introduce')}
                 />
               </div>
               <div className="w-full overflow-hidden">
@@ -176,7 +306,7 @@ const SignUp: NextPage = () => {
                   name="NEXT"
                   disabled={btnNext}
                   type="button"
-                  onClick={() => setStep(2)}
+                  onClick={() => confirmInfo()}
                 />
               </div>
             </div>
@@ -1006,11 +1136,7 @@ const SignUp: NextPage = () => {
                 <BtnJoin
                   name="JOIN"
                   disabled={!allAgree}
-                  type="button"
-                  onClick={() => {
-                    console.log('J O I N')
-                    router.push('/')
-                  }}
+                  type="submit"
                   cnt={2}
                 />
               </div>
@@ -1020,9 +1146,18 @@ const SignUp: NextPage = () => {
       </Layout>
       {/* top */}
       <TopNav navNow="signup" />
-
       {/* nav - phone */}
       <MenuNav />
+      {/* loading view */}
+      {submitting && <LoadingFull />}
+      {/* modal */}
+      {modal.show && (
+        <ModalOne
+          wording={modal.wording}
+          answer={modal.answer}
+          onClose={() => setModal({ show: false, wording: '', answer: '' })}
+        />
+      )}
     </div>
   )
 }

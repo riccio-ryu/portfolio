@@ -1,13 +1,19 @@
 import type { NextPage } from 'next'
-import { VscEdit } from 'react-icons/vsc'
+import { useRouter } from 'next/router'
+import getAccessToken from '@/pages/api/users/getAccessToken'
+
 import MenuNav from '@/components/menuNav'
 import TopNav from '@/components/topNav'
 import ItemHome from '@/components/itemHome'
-import { useRouter } from 'next/router'
 import Layout from '@/components/layout'
 
-const Home: NextPage = () => {
+import { VscEdit } from 'react-icons/vsc'
+import { reissue } from '../utils/reissue'
+
+const Home: NextPage = (props: any) => {
   const router = useRouter()
+  reissue(props.tokenData)
+
   return (
     <div>
       {/* home - body */}
@@ -37,3 +43,34 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps = async (ctx: any) => {
+  const { req, res } = ctx
+  const data = req.cookies.refreshToken
+
+  if (data === undefined) {
+    // 아직 로그인을 안한 경우
+    return {
+      props: {
+        tokenData: { ongoing: true, member: { email: '', accessToken: '' } },
+      },
+    }
+  } else {
+    // 로그인을 하고 새로고침을 한 경우
+    const result = await getAccessToken(req, res)
+    const {
+      ok: resultOk,
+      case: resultCase,
+      data: resultData,
+      error: resultErr,
+    } = result
+
+    // console.log(resultCase);
+
+    return {
+      props: {
+        tokenData: { ongoing: resultOk, member: resultData },
+      },
+    }
+  }
+}

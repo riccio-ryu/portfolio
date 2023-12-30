@@ -35,7 +35,10 @@ module.exports = {
       },
       fontSize: {
         ss: ['0.625rem', '0.75rem'],
-      }
+      },
+      animation: {
+        'spin-slow': 'spin 2.5s ease-in-out infinite',
+      },
     },
   },
   darkMode: 'class', // dark mode 대비 미리 생성

@@ -30,7 +30,7 @@ export default function Layout({ width, children }: LayoutProps) {
   }, [])
 
   return (
-    <div className="h-screen w-full">
+    <div className="relative h-screen w-full">
       <HeaderSpace />
       <div className="relative mx-auto my-0 min-h-[calc(100%-2.5rem)] w-auto max-w-[60rem] sm:min-h-[calc(100%-4rem)]">
         {/* sign up space wrap */}

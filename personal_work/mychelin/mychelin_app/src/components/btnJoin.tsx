@@ -5,7 +5,7 @@ interface BtnProps {
   type?: 'button' | 'reset' | 'submit' | undefined
   color?: string
   //   onClick?:
-  onClick(): void
+  onClick?(): void
 }
 
 export default function BtnJoin({

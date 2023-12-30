@@ -3,7 +3,7 @@ import { VscAdd } from 'react-icons/vsc'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import schemaUploadDiaryYup from '@/components/validationUploadDiaryYup'
+import schemaUploadDiaryYup from '@/utils/validationUploadDiaryYup'
 
 import MenuNav from '@/components/menuNav'
 import TopNav from '@/components/topNav'

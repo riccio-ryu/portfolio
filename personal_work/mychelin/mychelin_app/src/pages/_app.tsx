@@ -1,3 +1,6 @@
+import type { AppProps } from 'next/app'
+import React from 'react'
+import { RecoilRoot } from 'recoil'
 import '@/styles/globals.css'
 import '@/styles/datepicker.css'
 import {
@@ -7,10 +10,7 @@ import {
   Noto_Sans_KR,
   Nanum_Gothic,
 } from 'next/font/google'
-import type { AppProps } from 'next/app'
-import React from 'react'
-import { RecoilRoot } from 'recoil'
-
+import { cls } from '@/utils/classJoin'
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -45,11 +45,18 @@ export const nanum_gothic = Nanum_Gothic({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-    <div
-      className={`mx-auto w-full h-full font-roboto ${inter.variable} ${montserrat.variable} ${roboto.variable} ${noto_sans_kr.variable} ${nanum_gothic.variable}`}
-    >
-      <Component {...pageProps} />
-    </div>
+      <div
+        className={`mx-auto h-full w-full font-roboto ${cls(
+          noto_sans_kr.variable,
+          inter.variable,
+          montserrat.variable,
+          roboto.variable,
+          nanum_gothic.variable,
+        )}`}
+      >
+        {/*  ${inter.variable} ${montserrat.variable} ${roboto.variable} ${noto_sans_kr.variable} ${nanum_gothic.variable} */}
+        <Component {...pageProps} />
+      </div>
     </RecoilRoot>
   )
 }

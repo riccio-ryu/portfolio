@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+// import { ReactNode } from 'react'
 
 interface CheckProps {
   desc?: string // label desc
@@ -49,7 +49,7 @@ export default function CheckBox({
           type="checkbox"
           id={name}
           className="hidden w-auto"
-          checked={bool}
+          defaultChecked={bool}
           onClick={onClick}
         />
       </label>

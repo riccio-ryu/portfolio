@@ -10,6 +10,8 @@ interface InputProps {
   required: boolean
   err?: string
   goal?: 'sign-in' | 'sign-up'
+  focusPre?(str: string): void
+  enterDown?(): void
 }
 
 export default function InputJoin({
@@ -22,6 +24,8 @@ export default function InputJoin({
   required,
   err,
   goal = 'sign-in',
+  focusPre,
+  enterDown,
 }: InputProps) {
   return (
     <div
@@ -47,6 +51,14 @@ export default function InputJoin({
             required={required}
             className="box-border w-auto min-w-0 flex-auto rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-[200px] sm:min-w-0"
             {...register}
+            // onFocus={() => console.log(name)}
+            onFocus={() => focusPre?.(name)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                enterDown?.()
+              }
+            }}
           />
         ) : null}
         {tag === 'textarea' ? (
@@ -55,6 +67,7 @@ export default function InputJoin({
             rows={4}
             className="box-border w-auto min-w-0 flex-auto resize-none rounded-[4px] border border-mcl-999 px-1 py-1 transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-[200px] sm:min-w-0"
             {...register}
+            onFocus={() => focusPre?.(name)}
           ></textarea>
         ) : null}
       </div>

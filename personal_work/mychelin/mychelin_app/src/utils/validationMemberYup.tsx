@@ -29,3 +29,19 @@ const schemaMemberYup = yup.object().shape({
 })
 
 export default schemaMemberYup
+
+export const schemaSignInYup = yup.object().shape({
+  email: yup
+    .string()
+    .email('이메일 형식을 맞춰서 입력해주세요.')
+    .required('이메일을 필수로 입력해주세요.'),
+  password: yup
+    .string()
+    .min(8, '비밀번호를 8~16글자로 입력해주세요.')
+    .max(16, '비밀번호를 8~16글자로 입력해주세요.')
+    .matches(
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^*+=-])/,
+      '비밀번호에 영문, 숫자, 특수문자를 포함해주세요.',
+    )
+    .required('비밀번호를 필수로 입력해주세요.'),
+})

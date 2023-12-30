@@ -1,7 +1,7 @@
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import DatePicker from './datePicker'
 import { useEffect, useState } from 'react'
-import Dayjs from './dayjs'
+import Dayjs from '../utils/dayjs'
 
 interface InputProps {
   label: string //label name
