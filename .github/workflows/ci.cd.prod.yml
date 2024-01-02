@@ -4,14 +4,7 @@ on:
   pull_request:
     branches: [master]
       types: [closed]
-
-jobs:name: 🚀 Build & Deploy workflow on production environment
-
-on:
-  pull_request:
-    branches: [main]
-    types: [closed]
-
+      
 jobs:
   build:
     if: github.event.pull_request.merged == true
@@ -54,7 +47,6 @@ jobs:
 
       - name: 🔨 Build Project
         run: pnpm build
-
   deploy:
     if: github.event.pull_request.merged == true
     env:

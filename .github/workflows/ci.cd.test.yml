@@ -47,7 +47,6 @@ jobs:
 
       - name: 🔨 Build Project
         run: pnpm build
-        
   deploy:
     env:
       ENV_PATH: .env
