@@ -27,6 +27,10 @@ interface UploadForm {
   review?: string
 }
 
+interface reStarForm {
+  [key: string]: number // key 의 타입, value 의 타입만 정의
+}
+
 const DiaryUpload: NextPage = () => {
   const {
     register,
@@ -37,7 +41,7 @@ const DiaryUpload: NextPage = () => {
     setValue,
     getValues,
   } = useForm<UploadForm>({
-    resolver: yupResolver(schemaUploadDiaryYup),
+    resolver: yupResolver<any>(schemaUploadDiaryYup),
     defaultValues: { menus: [] },
     mode: 'onChange',
   })
@@ -46,7 +50,7 @@ const DiaryUpload: NextPage = () => {
   // useEffect(() => {
   //   console.log(visitDate)
   // }, [visitDate])
-  const [restaurantStar, setRestaurantStar] = useState({
+  const [restaurantStar, setRestaurantStar] = useState<reStarForm>({
     service: 0,
     hygiene: 0,
     mood: 0,

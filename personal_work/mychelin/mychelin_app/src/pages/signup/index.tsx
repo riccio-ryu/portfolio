@@ -44,7 +44,7 @@ const SignUp: NextPage = () => {
     setError,
     setFocus,
   } = useForm<SignUpForm>({
-    resolver: yupResolver(schemaMemberYup),
+    resolver: yupResolver<any>(schemaMemberYup),
     mode: 'onChange',
   })
 
