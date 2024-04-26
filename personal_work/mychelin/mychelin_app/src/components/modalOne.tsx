@@ -24,7 +24,7 @@ export default function ModalOne({
     }
   }, [])
   return (
-    <div className="absolute left-0 top-0 z-50 h-full w-full">
+    <div className="absolute left-0 top-0 z-50 h-screen w-full">
       <div
         className="relative h-full w-full bg-black opacity-50"
         onClick={onClose}

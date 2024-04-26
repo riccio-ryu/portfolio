@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { VscAdd } from 'react-icons/vsc'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import schemaUploadDiaryYup from '@/utils/validationUploadDiaryYup'
@@ -10,7 +10,8 @@ import TopNav from '@/components/topNav'
 import Layout from '@/components/layout'
 import InputUpload from '@/components/inputUpload'
 import StarBoard from '@/components/starBoard'
-
+import MapModal from '@/components/mapModal'
+import { useDropzone } from 'react-dropzone'
 interface menuObj {
   menu: string
   taste: number
@@ -27,6 +28,25 @@ interface UploadForm {
   review?: string
 }
 
+interface reStarForm {
+  [key: string]: number // key 의 타입, value 의 타입만 정의
+}
+
+interface restaurantInfoFrom {
+  address_name: string
+  category_group_code: string
+  category_group_name: string
+  category_name: string
+  distance: string
+  id: string
+  phone: string
+  place_name: string
+  place_url: string
+  road_address_name: string
+  x: string
+  y: string
+}
+
 const DiaryUpload: NextPage = () => {
   const {
     register,
@@ -37,16 +57,48 @@ const DiaryUpload: NextPage = () => {
     setValue,
     getValues,
   } = useForm<UploadForm>({
-    resolver: yupResolver(schemaUploadDiaryYup),
+    resolver: yupResolver<any>(schemaUploadDiaryYup),
     defaultValues: { menus: [] },
     mode: 'onChange',
+  })
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'image/*': [],
+    },
+    onDrop: (acceptedFiles: File[]) => {
+      if (files.length) {
+        acceptedFiles.forEach((f) => {
+          files.forEach(
+            (fs) => fs.name !== f.name && setFiles([...files, f]),
+            setPrevImg((prev) => prev.concat(URL.createObjectURL(f))),
+          )
+        })
+      } else {
+        setFiles(acceptedFiles)
+        acceptedFiles.forEach((file) => {
+          setPrevImg((prev) => prev.concat(URL.createObjectURL(file)))
+        })
+      }
+    },
   })
 
   // const [visitDate, setVisitDate] = useState<Date>(new Date())
   // useEffect(() => {
   //   console.log(visitDate)
   // }, [visitDate])
-  const [restaurantStar, setRestaurantStar] = useState({
+  const [files, setFiles] = useState<File[]>([])
+  const [prevImg, setPrevImg] = useState<string[]>([])
+  const [mapToggle, setMapToggle] = useState(false)
+  const onMapModalClose = () => {
+    setMapToggle(false)
+  }
+  const [getRestaurantInfo, setGetRestaurantInfo] = useState(Object)
+  const onMapModalSelect = (obj: restaurantInfoFrom) => {
+    setGetRestaurantInfo(obj)
+    setValue('restaurant', obj.place_name)
+  }
+  const [restaurantStar, setRestaurantStar] = useState<reStarForm>({
     service: 0,
     hygiene: 0,
     mood: 0,
@@ -96,27 +148,62 @@ const DiaryUpload: NextPage = () => {
 
   const onSubmit = (data: UploadForm) => {
     console.log(data)
+    console.log(files)
   }
+
   return (
     // diary detail page
     <div>
+      {mapToggle ? (
+        <MapModal
+          onModal={() => onMapModalClose()}
+          onSelect={(obj: object) => onMapModalSelect(obj)}
+        />
+      ) : (
+        ''
+      )}
       <Layout>
         <div className="mx-auto my-0 w-full pt-6 sm:w-[720px]">
+          <h2 className="pb-4 text-center font-inter text-xl">Diary Upload</h2>
           <form
             className="flex h-auto w-full flex-col items-center justify-start gap-6"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="relative box-border h-0 w-1/2 overflow-hidden rounded border border-solid border-mcl-orange pb-[50%]">
-              <label
-                htmlFor="fileUpload"
-                className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-2.5"
-              >
-                <VscAdd className="text-5xl text-mcl-orange" />
-                <p className="text-center text-ss text-mcl-999 sm:text-sm">
-                  Add your images or short videos...
-                </p>
-                <input type="file" id="fileUpload" className="hidden" />
-              </label>
+            <div className="relative box-border h-0 min-w-full overflow-hidden overflow-x-auto pb-[50%]">
+              <div className="absolute flex h-full w-max min-w-full flex-nowrap items-center justify-start gap-3">
+                {prevImg.length
+                  ? prevImg.map((pi, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="relative h-full w-1/2 max-w-[360px] flex-none overflow-hidden rounded border border-solid border-mcl-orange"
+                        >
+                          <img
+                            src={pi}
+                            alt={pi}
+                            className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 object-cover"
+                          />
+                        </div>
+                      )
+                    })
+                  : ''}
+                <div
+                  {...getRootProps()}
+                  className={`dropzone group flex flex-none flex-col items-center justify-center gap-1 border border-solid border-mcl-orange ${
+                    prevImg.length
+                      ? 'prev-have h-12 w-12 rounded-full bg-mcl-orange'
+                      : 'mx-auto my-0 h-full w-1/2 rounded'
+                  }`}
+                >
+                  <input {...getInputProps()} />
+                  <VscAdd className="text-5xl text-mcl-orange group-[.prev-have]:text-2xl group-[.prev-have]:text-white" />
+                  <p
+                    className={`text-center text-ss text-mcl-999 group-[.prev-have]:hidden sm:text-sm`}
+                  >
+                    Drag & drop some files here, or click to select files
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="w-full">
               <InputUpload
@@ -133,9 +220,12 @@ const DiaryUpload: NextPage = () => {
                 label="가게이름"
                 name="restaurant"
                 type="text"
+                tag="map"
                 required
                 err={errors.restaurant && errors.restaurant.message}
                 register={register('restaurant')}
+                btnClick={() => setMapToggle(true)}
+                value={getRestaurantInfo.place_name || ''}
               />
               <div className="flex items-start justify-start pb-3">
                 <span className="h-full w-1/5 bg-transparent sm:w-1/6"></span>
@@ -249,7 +339,7 @@ const DiaryUpload: NextPage = () => {
             </div>
             <div className="w-full">
               <button
-                className="w-full rounded-[4px] bg-mcl-orange px-9 py-2 text-xs text-white sm:w-32 sm:py-3 sm:text-base"
+                className="mx-auto block w-full rounded-[4px] bg-mcl-orange px-9 py-2 text-xs text-white sm:w-32 sm:py-3 sm:text-base"
                 type="submit"
               >
                 저장

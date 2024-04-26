@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-const secret = process.env.JWT_SECRET
+// eslint-disable-next-line no-undef
+const secret = process.env.NEXT_PUBLIC_JWT_SECRET
 
 // access Token 발급
 const sign = (userId: string) => {

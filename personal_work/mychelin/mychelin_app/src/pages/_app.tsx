@@ -3,6 +3,8 @@ import React from 'react'
 import { RecoilRoot } from 'recoil'
 import '@/styles/globals.css'
 import '@/styles/datepicker.css'
+import '@/styles/mapModal.css'
+
 import {
   Inter,
   Roboto,

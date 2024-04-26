@@ -1,7 +1,7 @@
 import { VscEllipsis, VscHeart, VscComment } from 'react-icons/vsc'
 import { useState } from 'react'
 import StarBoard from './starBoard'
-import ItemDiaryModal from './itemDiarymodal'
+import ItemDiaryModal from './itemDiaryModal'
 
 // interface ItemHomeProps {}
 

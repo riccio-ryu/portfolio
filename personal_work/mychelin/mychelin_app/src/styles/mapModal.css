@@ -1,0 +1,158 @@
+#map_modal #menu_wrap .option {
+  text-align: center;
+}
+#map_modal #menu_wrap .option p {
+  margin: 10px 0;
+}
+#map_modal #menu_wrap .option button {
+  margin-left: 5px;
+}
+#map_modal #search-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+#map_modal #search-result .result-text {
+  padding: 2px;
+  width: 100%;
+  /* border-bottom: 1px solid #eee; */
+  background-color: #ccc;
+}
+#map_modal #search-result .result-keyword {
+  color: #ff5b00;
+}
+#map_modal .scroll-wrapper {
+  width: 100%;
+}
+#map_modal #placesList li {
+  list-style: none;
+}
+#map_modal #placesList .item {
+  position: relative;
+  border-bottom: 1px solid #888;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 65px;
+}
+#map_modal #placesList .item span {
+  display: block;
+  /* margin-top: 4px; */
+}
+#map_modal #placesList .item h5,
+#map_modal #placesList .item .info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#map_modal #placesList .item .info {
+  padding: 4px 4px 4px 24px;
+}
+#map_modal #placesList .info .gray {
+  color: #8a8a8a;
+}
+#map_modal #placesList .item .info > .info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2px;
+}
+#map_modal #placesList .item .info .place-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+#map_modal #placesList .item .info .road-address-name,
+#map_modal #placesList .item .info .no-road-address-name {
+  font-size: 12px;
+}
+#map_modal #placesList .item .info .address-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+}
+#map_modal #placesList .item .info .address-name {
+}
+#map_modal #placesList .info .jibun {
+  padding-left: 26px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+    no-repeat;
+  text-indent: -999999px;
+  height: 16px;
+}
+#map_modal #placesList .info .tel {
+  color: #ffc200;
+  font-size: 12px;
+}
+#map_modal #placesList .item .marker {
+  float: left;
+  position: absolute;
+  width: 20px;
+  height: 22px;
+  margin: 4px 0 0 4px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+    no-repeat;
+  background-size: 20px;
+  text-indent: 9999px;
+}
+#map_modal #placesList .item .marker_1 {
+  background-position: 0 -4px;
+}
+#map_modal #placesList .item .marker_2 {
+  background-position: 0 -30px;
+}
+#map_modal #placesList .item .marker_3 {
+  background-position: 0 -56px;
+}
+#map_modal #placesList .item .marker_4 {
+  background-position: 0 -81px;
+}
+#map_modal #placesList .item .marker_5 {
+  background-position: 0 -107px;
+}
+#map_modal #placesList .item .marker_6 {
+  background-position: 0 -132px;
+}
+#map_modal #placesList .item .marker_7 {
+  background-position: 0 -158px;
+}
+#map_modal #placesList .item .marker_8 {
+  background-position: 0 -183px;
+}
+#map_modal #placesList .item .marker_9 {
+  background-position: 0 -209px;
+}
+#map_modal #placesList .item .marker_10 {
+  background-position: 0 -234px;
+}
+#map_modal #placesList .item .marker_11 {
+  background-position: 0 -260px;
+}
+#map_modal #placesList .item .marker_12 {
+  background-position: 0 -285px;
+}
+#map_modal #placesList .item .marker_13 {
+  background-position: 0 -311px;
+}
+#map_modal #placesList .item .marker_14 {
+  background-position: 0 -336px;
+}
+#map_modal #placesList .item .marker_15 {
+  background-position: 0 -362px;
+}
+#map_modal #pagination {
+  margin: 10px auto;
+  text-align: center;
+}
+#map_modal #pagination a {
+  display: inline-block;
+  margin-right: 10px;
+}
+#map_modal #pagination .on {
+  font-weight: bold;
+  cursor: default;
+  color: #777;
+}
