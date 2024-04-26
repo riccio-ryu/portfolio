@@ -1,9 +1,0 @@
-{
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma",
-    "editor.formatOnSave": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": ["fortawesome"],
-  "editor.formatOnSave": true
-}
