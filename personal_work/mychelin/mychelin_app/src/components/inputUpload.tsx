@@ -7,12 +7,13 @@ interface InputProps {
   label: string //label name
   name: string //id
   method?: 'text' | 'phone' | 'price' //
-  tag?: 'input' | 'textarea' | 'date' // input ? textarea? date?
+  tag?: 'input' | 'textarea' | 'date' | 'map' // input ? textarea? date?
   type: string // input type
   register: UseFormRegisterReturn
   required?: boolean // required *
   err?: string // err message
   add?: '' | 'plus' | 'minus' // + add
+  value?: string
   btnClick?(): void
 }
 
@@ -26,6 +27,7 @@ export default function InputUpload({
   required,
   err,
   add = '',
+  value,
   btnClick,
 }: InputProps) {
   const [fetchDate, setFetchDate] = useState(new Date())
@@ -105,6 +107,18 @@ export default function InputUpload({
           </>
         ) : // selectDate={setVisitDate}
         null}
+        {tag === 'map' ? (
+          <input
+            autoComplete="off"
+            type={type}
+            id={name}
+            required={required}
+            className="box-border flex-1 rounded-lg border border-mcl-999 px-1 py-1 text-xs transition-all duration-100 ease-in-out focus:border-mcl-orange sm:w-max sm:text-base"
+            {...register}
+            onClick={btnClick}
+            value={value}
+          />
+        ) : null}
       </div>
       {err && <div className="pl-32 text-[10px] text-mcl-red">{err}</div>}
     </div>

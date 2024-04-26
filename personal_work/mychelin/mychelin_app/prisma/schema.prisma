@@ -1,6 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// 2024. 04 planetscale 무료 종료,,,, 비상...
+
 generator client {
   provider       = "prisma-client-js"
   reviewFeatures = ["referentialIntegrity"]
@@ -8,32 +10,76 @@ generator client {
 
 datasource db {
   provider     = "mysql"
-  url          = env("DATABASE_URL")
+  url          = env("NEXT_PUBLIC_DATABASE_URL")
   relationMode = "prisma"
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
+  id           Int              @id @default(autoincrement())
+  email        String           @unique
   password     String
   nickname     String
   name         String?
   interest     String?
   introduction String?
   avatar       String?
-  keepLog      Boolean? @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  keepLog      Boolean?         @default(false)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
   tokens       String?
+  restaurant   Restaurant[]
+  menu         RestaurantMenu[]
+  fav          Fav[]
 }
 
-// model Token {
-//   id        Int      @id @default(autoincrement())
-//   payload   String   @unique
-//   // user      User     @relation(fields: [userId], references: [id])
-//   userId    Int
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
+model Restaurant {
+  id            Int              @id @default(autoincrement())
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+  image         String
+  date          String
+  name          String
+  starService   Int
+  starHygiene   Int
+  starMood      Int
+  starRecommend Int
+  starRevisit   Int
+  title         String?
+  review        String?          @db.MediumText
+  menu          RestaurantMenu[]
+  fav           Fav[]
 
-//   @@index([userId])
-// }
+  @@index([userId])
+}
+
+model RestaurantMenu {
+  id           Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  name         String
+  starTaste    Int
+  starAmount   Int
+  starPrice    Int
+
+  @@index([userId])
+  @@index([restaurantId])
+}
+
+model Fav {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([restaurantId])
+}

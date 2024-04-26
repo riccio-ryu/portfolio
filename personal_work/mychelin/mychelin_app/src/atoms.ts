@@ -17,3 +17,8 @@ export const loginInfo = atom({
   key: 'loginInfo',
   default: false,
 })
+
+export const geoInfo = atom({
+  key: 'geoInfo',
+  default: { geoLat: 37.566826, geoLon: 126.9786567 },
+})
