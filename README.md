@@ -4,37 +4,13 @@
 
 ---
 
-## 이전 회사에서 작업한 내용이 궁금하시다면 'ex_company'로 이동
-
-[이전 회사 작업물 이동](https://github.com/riccio-ryu/ex_company)  
+### 이전 회사에서 작업한 내용이 궁금하시다면 [ex_company](https://github.com/riccio-ryu/ex_company)
 이전에 근무하였던 회사들의 작업물을 적어 놓았고, 간단한 설명과 근무하면서 고민하였던 코드들을 작성해 보았습니다.
 
 ---
 
-## 혼자 공부하면서 개발하였던 장소는 'toy_project'
-
-[개인 작업실로 이동](https://github.com/riccio-ryu/toy_project)  
+### 혼자 공부하면서 개발하였던 장소는 [toy_project](https://github.com/riccio-ryu/toy_project)  
 개인 작업물을 모아 놓은 공간입니다. 혼자 공부하여 새로운 프로잭트를 진행하거나, 테스트를 통해서 배움을 얻어가는 공간으로 구성되어 있습니다.
-
-### mychelin
-
-> 현재 프로젝트 진행 중!
-
-next와 typescript, react-query, recoil, tailwind, prisma, planetScale 등을 사용하여 만들고 있습니다.
-
-[mychelin 폴더로 이동](https://github.com/riccio-ryu/portfolio)
-
-### petti
-
-react와 typescript, react-query(현재의 tanstack query의 react query), recoil, styled-components 등을 사용하여 client(front-end)를 구성하였고, node의 프레임 워크 express와 mongoose(mongoDB)를 이용하여 server(back-end)를 구성하였다
-
-[petti 폴더로 이동](https://github.com/riccio-ryu/toy_project/tree/master/petti)
-
-### jusi
-
-react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주식의 가격을 실시간으로 받아와 그래프를 보여줍니다
-
-[jusi 폴더로 이동](https://github.com/riccio-ryu/toy_project/tree/master/jusi)
 
 # MYCHELIN
 
@@ -44,7 +20,11 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 > 기존의 지도 어플에는 방문했던 곳이라도 각 메뉴를 일일히 기억하거나 그 전과의 맛변화를 일일히 개인 메모장에 적어 놓곤했는데, 간편하게 확인하고 비교하고, 변화된 맛에도 새로 반응을 하는 것이 조금 더 객관적인 맛 평가가 될 것이라고 생각해서 기획하게 되었습니다.  
 > 공유를 하지 않더라도 본인만의 음식 기록 블로그로 사용해도 좋게 만들고자 한다.
 
-## 중요 공지 :: 현재, 기존에 사용하던 planetscale의 유료화로 인해 DB가 없이 작업을 다시 하고 있습니다... mongoDB나 다른것을 채택하고 적용하면 DB쪽은 다시 손보겠습니다...
+
+        
+<span style="color:orange"> ** 중요 공지 :: 현재, 기존에 사용하던 planetscale의 유료화로 인해 DB가 없이 작업을 다시 하고 있습니다... mongoDB나 다른것을 채택하고 적용하면 DB쪽은 다시 손보겠습니다... **  </span>
+
+      
 
 ## 사용 언어
 
