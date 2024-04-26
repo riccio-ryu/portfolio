@@ -62,7 +62,7 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 
 ## 확인 주소
 
-[기획서 pdf](https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/mychelin_portfolio.pdf)  
+[기획서 pdf](https://github.com/riccio-ryu/portfolio/blob/master/mychelin_portfolio.pdf)  
 [디자인 figma](https://www.figma.com/proto/6rMF3YWiEWGa4CsoW6xwWp?node-id=0-1&mode=design&t=7DyYtzbc3YWOcYK1-6)
 
 ## 업데이트 예정
@@ -104,7 +104,7 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### Home
 
 <p>
-  <img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_home.png">
+  <img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_home.png">
 데이터는 없기 때문에 예시 이미지 입니다.  
 </p>
 <br clear='left' />
@@ -112,8 +112,8 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### Sign-up
 
 <p>
-<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_join1.png">
-<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_join2.png">  
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_join1.png">
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_join2.png">  
 <br />
 회원가입 페이지로, 회원의 기본정보를 입력하고 약관 동의를 받습니다. react-hook-form을 사용하여 data를 체크합니다  
 주소는 '/signup'
@@ -123,7 +123,7 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### Sign-in
 
 <p>
-<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_login.png">
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_login.png">
 로그인 페이지로, 회원가입 했던 이메일과 비밀번호를 입력하하면 됩니다. react-hook-form을 사용하여 data를 유효성검사를 합니다  
 주소는 '/signin'
 </p>
@@ -132,21 +132,21 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### Diary
 
 <p>
-<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary.png">
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_diary.png">
 본인이 작성한 글 리스트를 볼 수 있는 화면입니다.  
 주소는 '/diary'
 </p>
 <br clear='left' />
 <br />
 <p>
-<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary_detail.png">
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_diary_detail.png">
 본인이 작성한 글이나 다른 유저가 공개한 글을 볼 수 있는 화면입니다.  
 주소는 '/diary/[글번호]'
 </p>
 <br clear='left' />
 <br />
 <p>
-<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_diary_upload.png">
+<img align="left" width="480" height="auto" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_diary_upload.png">
 본인이 글을 작성할 때에 볼 수 있는 화면입니다.  
 주소는 '/diary/upload'
 </p>
@@ -156,7 +156,7 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### Profile-user
 
 <p>
-<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mychelin_profile_user.png">
+<img align="left" width="auto" height="300" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mychelin_profile_user.png">
 다른 유저의 프로필과 작성하고 공개한 글 리스트를 볼 수 있는 화면입니다.  
 주소는 '/profile/[userid]'
 </p>
@@ -165,15 +165,15 @@ react와 typescript를 위주로 구성이 되어 있으며, 대한민국의 주
 #### mobile
 
 <p>
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_home.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_join1.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_home.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_join1.png">
 </p>
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_join2.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_login.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_diary.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_diary_detail.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_diary_upload.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/mob-mychelin_profile_user.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_join2.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_login.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_diary.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_diary_detail.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_diary_upload.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/mob-mychelin_profile_user.png">
 <br clear='left' />
 
 ## 2차 업데이트 진행 과정
@@ -194,7 +194,7 @@ libs라는 폴더는 'client'와 'server'로 구성되어 있고, 'client'는 �
 
 e-mail과 nickname을 서버에서 체크해서 있다면 만들지 못하게 하고, 없다면 회원가입을 가능하게 하였다.
 'bcrypt'를 사용해서 password를 암호화 하는 작업을 하였다. 또한 로그인 할 때에 입력된 비밀번호와 서버에 등록된 암호를 비교하여 로그인가능하도록 하였다.  
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/bcrypt.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/bcrypt.png">
 
 ### JWT, Access Token & Refresh Token
 
@@ -250,5 +250,5 @@ pure : 사용하지 않은 속성 제거
 즉, 이 경고 메세지는 규칙이 변경된 것이 아니고 규칙을 지킬 수 있도록 이전에 하지않던 경고를 주는 것 이라고 한다.  
 해결 방안으로는 useEffect를 활용하여 렌더링 되고 난 후에 조건 충족시 setState 진행이 되게 하였다.
 
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/error_Too_many_re_renders.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/personal_work/mychelin/readmeCapture/error_Too_many_re_renders_code.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders_code.png">
