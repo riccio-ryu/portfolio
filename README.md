@@ -233,17 +233,19 @@ pure : 사용하지 않은 속성 제거
 
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders.png">
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders_code.png">
+<br clear='left' />
 
 ### diary & diary upload
 
 diary의 페이지를 컨텐츠마다 박스를 기준으로 컴포넌트를 만들어 구성. 선택시 해당 페이지의 디테일 페이지로 이동한다.  
 diary upload 페이지에는 사진 등록, 가게 선택(카카오 맵)등이 포함 되어 있습니다. 사진을 등록할 때 input의 type을 이용하여 하려고 했지만, 'react-dropzone'을 사용하는 것이 커스터마이징하기에 더 편한 것 같아 해당 라이브러리를 사용하기로 함.  
-맵도 naver를 이용하려고 했는데, 가게를 검색할 수 있는 기능이 사라졌기에 카카오맵을 사용하기로 결정했습니다.
+맵도 naver를 이용하려고 했는데, 가게를 검색할 수 있는 기능이 사라졌기에 카카오맵을 사용하기로 결정했습니다.  
 
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_01.png">
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_02.png">
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_03.png">
-<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_detail.png">
+<br clear='left' />
+diary를 업로드 하는 페이지의 상세 내용 예시
 
 ### planetscale의 유료화...
 
