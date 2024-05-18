@@ -5,11 +5,13 @@
 ---
 
 ### 이전 회사에서 작업한 내용이 궁금하시다면 [ex_company](https://github.com/riccio-ryu/ex_company)
+
 이전에 근무하였던 회사들의 작업물을 적어 놓았고, 간단한 설명과 근무하면서 고민하였던 코드들을 작성해 보았습니다.
 
 ---
 
-### 혼자 공부하면서 개발하였던 장소는 [toy_project](https://github.com/riccio-ryu/toy_project)  
+### 혼자 공부하면서 개발하였던 장소는 [toy_project](https://github.com/riccio-ryu/toy_project)
+
 개인 작업물을 모아 놓은 공간입니다. 혼자 공부하여 새로운 프로잭트를 진행하거나, 테스트를 통해서 배움을 얻어가는 공간으로 구성되어 있습니다.
 
 # MYCHELIN
@@ -20,10 +22,8 @@
 > 기존의 지도 어플에는 방문했던 곳이라도 각 메뉴를 일일히 기억하거나 그 전과의 맛변화를 일일히 개인 메모장에 적어 놓곤했는데, 간편하게 확인하고 비교하고, 변화된 맛에도 새로 반응을 하는 것이 조금 더 객관적인 맛 평가가 될 것이라고 생각해서 기획하게 되었습니다.  
 > 공유를 하지 않더라도 본인만의 음식 기록 블로그로 사용해도 좋게 만들고자 한다.
 
-
 > [!IMPORTANT]
 > 중요 공지 :: 현재, 기존에 사용하던 planetscale의 유료화로 인해 DB가 없이 작업을 다시 하고 있습니다... mongoDB나 다른것을 채택하고 적용하면 DB쪽은 다시 손보겠습니다...
-      
 
 ## 사용 언어
 
@@ -233,3 +233,18 @@ pure : 사용하지 않은 속성 제거
 
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders.png">
 <img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/error_Too_many_re_renders_code.png">
+
+### diary & diary upload
+
+diary의 페이지를 컨텐츠마다 박스를 기준으로 컴포넌트를 만들어 구성. 선택시 해당 페이지의 디테일 페이지로 이동한다.  
+diary upload 페이지에는 사진 등록, 가게 선택(카카오 맵)등이 포함 되어 있습니다. 사진을 등록할 때 input의 type을 이용하여 하려고 했지만, 'react-dropzone'을 사용하는 것이 커스터마이징하기에 더 편한 것 같아 해당 라이브러리를 사용하기로 함.  
+맵도 naver를 이용하려고 했는데, 가게를 검색할 수 있는 기능이 사라졌기에 카카오맵을 사용하기로 결정했습니다.
+
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_01.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_02.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_upload_03.png">
+<img align="left" width="auto" height="200" src="https://github.com/riccio-ryu/portfolio/blob/master/readmeCapture/diary_detail.png">
+
+### planetscale의 유료화...
+
+잘 사용하고 있던 MySQL database platform인 planetscale의 유료화.... DB를 제외하고 나머지를 진행하자.
