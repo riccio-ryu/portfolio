@@ -16,7 +16,7 @@ interface MenuNavProps {
 export default function MenuNav({ title, navNow }: MenuNavProps) {
   const navList = ['Home', 'Diary', 'Map', 'Chat', 'Storage']
   return (
-    <div className="fixed bottom-0 left-0 block h-10 w-full translate-x-0 overflow-hidden bg-white sm:left-1/2 sm:top-0 sm:h-16 sm:w-auto sm:-translate-x-1/2 sm:bg-transparent">
+    <div className="fixed bottom-0 left-0 z-10 block h-10 w-full translate-x-0 overflow-hidden bg-white sm:left-1/2 sm:top-0 sm:h-16 sm:w-auto sm:-translate-x-1/2 sm:bg-transparent">
       <div className="flex h-full w-full flex-row flex-nowrap justify-around">
         {navList.map((navName, i) => (
           <Link
