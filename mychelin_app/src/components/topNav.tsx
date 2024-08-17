@@ -22,7 +22,13 @@ export default function TopNav({ navNow }: TopNavProps) {
   }
 
   return (
-    <div className="fixed top-0 h-10 w-full bg-white shadow-lg sm:h-16">
+    <div
+      className={`fixed top-0 z-10 h-10 w-full bg-white shadow-lg sm:h-16 ${
+        navNow === 'map'
+          ? 'border-2 border-solid border-mcl-eee shadow-none'
+          : ''
+      }`}
+    >
       <div className="flex h-full w-full max-w-7xl flex-row content-center items-center justify-between px-1 sm:px-4">
         {/* left logo */}
         <div className="flex flex-nowrap content-center items-center justify-start gap-1.5 sm:gap-3">
